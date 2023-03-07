@@ -5,18 +5,18 @@ Dimension::Dimension(){
     hauteur=0;
 }
 
-float Dimension::getHauteur() const {
+int Dimension::getHauteur() const {
     return hauteur;
 }
 
-float Dimension::getLargeur() const {
+int Dimension::getLargeur() const {
     return largeur;
 }
 
-void Dimension::setHauteur(float H){
+void Dimension::setHauteur(int H){
     hauteur=H;
 }
 
-void Dimension::setLargeur(float L){
+void Dimension::setLargeur(int L){
     largeur=L;
 }

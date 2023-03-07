@@ -1,13 +1,14 @@
 #ifndef LABY_H
 #define LABY_H 
 #include "Dimension.h"
+#include <string>
 #include "Position.h"
 
 class Labyrinthe {
 
     private : 
 
-    enum TypeLab { VIDE = 0 , MUR = 1 ,EMPCIBLE= 2 };
+    enum TypeLab { VIDE = '.' , MUR = '#' ,EMPCIBLE='*' };
     Dimension dimL;
 
     TypeLab tabLab[200][200];
@@ -15,10 +16,10 @@ class Labyrinthe {
     public: 
     Labyrinthe();
     ~Labyrinthe();
-    TypeLab getTypeLab (Position & p );
+    TypeLab getTypeLab (const Position & p )const ;
     void setTypeLab(Position & p , TypeLab lab );
-    Dimension getDim();
-    void setDim(const Dimension & dim );
+    Dimension  getDim() const ;
+   /* void setDim(const Dimension & dim );*/
 
 
 

@@ -3,15 +3,15 @@
 
 class Dimension {
     private:
-        float largeur;
-        float hauteur;
+        int largeur;
+        int hauteur;
 
     public:
         Dimension();
-        float getLargeur() const;
-        float getHauteur() const;
-        void setLargeur(float L);
-        void setHauteur(float H);
+        int  getLargeur() const;
+        int getHauteur() const;
+        void setLargeur(int L);
+        void setHauteur(int H);
     
 };
   

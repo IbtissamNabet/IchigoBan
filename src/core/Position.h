@@ -7,11 +7,10 @@ class Position {
     int x,y ;
     public: 
     Position();
-    ~Position();
     int getPosX() const ;
     int getPosY() const ;
-    void setPosX( int x );
-    void setPosY( int y);
+    void setPosX( int a );
+    void setPosY( int b);
 
     
 
