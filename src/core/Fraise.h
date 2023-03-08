@@ -3,6 +3,7 @@
 
 #include"Labyrinthe.h"
 #include"Position.h"
+#include"Gardien.h"
 
 
 class Fraise
@@ -10,25 +11,15 @@ class Fraise
 private:
     Position pos_Fraise ;
 public:
-    Fraise(/* args */);
-    ~Fraise();
+    Fraise();
+
     Position & getPositionFraise();
     void setPositionFraise(const Position & p);
-    bool positionValide(const Position & p);
-    void gauche(const Labyrinthe & l);
-    void droite(const Labyrinthe & l );
-    void haut(const Labyrinthe & l );
-    void bas(const Labyrinthe &l);
+    void gauche(const Labyrinthe & l,const Gardien & g);
+    void droite(const Labyrinthe & l,const Gardien & g);
+    void haut(const Labyrinthe & l,const Gardien & g);
+    void bas(const Labyrinthe &l,const Gardien & g);
 
-
-
-Fraise::Fraise(/* args */)
-{
-}
-
-Fraise::~Fraise()
-{
-}
 
 
 
