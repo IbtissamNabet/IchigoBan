@@ -25,18 +25,9 @@ const char lab1[15][40] = {
 };
 
 
-
 Labyrinthe::Labyrinthe () {
-	dimL.setHauteur(0);
-	dimL.setLargeur(0);
-	tabLab=NULL;
-
-}
-
-
-Labyrinthe::Labyrinthe (const Dimension & d) {
-    int dimy=d.getHauteur();
-	int dimx=d.getLargeur();
+    int dimy=15;
+	int dimx=40;
 	assert(dimx>=0);
 	assert(dimy>=0);
 	dimL.setHauteur(dimy);
@@ -54,6 +45,8 @@ Labyrinthe::Labyrinthe (const Dimension & d) {
 			}
 		}
 }
+
+
  Labyrinthe::~Labyrinthe(){
 	delete [] tabLab ;
 	if(tabLab!=NULL) {
@@ -111,31 +104,12 @@ bool Labyrinthe::estPositionValide(const Position & p)const{
 
 void Labyrinthe::testRegression() const {
 	 	Labyrinthe lab;
-        assert(lab.dimL.getHauteur()==0 );
-        assert(lab.dimL.getLargeur()==0 );
-		assert(lab.tabLab==nullptr);
-		Dimension d ;
-		d.setHauteur(150);
-		d.setLargeur(200);
-        Labyrinthe lab2(d);
-        assert(lab2.getDim().getLargeur()==200);
-        assert(lab2.getDim().getHauteur()==150);
-        assert( lab2.tabLab!=nullptr );
-        /*for(int i=0;i<lab2.getDim().getLargeur();i++)
-        {
-          assert(i<lab2.getDim().getLargeur());
-            for( int j=0;j<lab2.getDim().getHauteur();j++)
-            {
-                assert(j<lab2.getDim().getHauteur());
-				int i=j*lab2.getDim().getLargeur()+i;
-                switch 
-                assert(im2.getPix(64,128).getRouge()==0 );  
-                assert(im2.getPix(64,128).getVert()==0 ); 
-                assert(im2.getPix(64,128).getBleu()==0 ); 
-              
-                        // car une image en sortie du constructeur doit être toute noire
-            } 
-        
-  } 
-       */
-}
+        assert(lab.dimL.getHauteur()==15 );
+        assert(lab.dimL.getLargeur()==40 );
+        assert(lab.tabLab!=nullptr);   
+		Position p;
+		p=Position(0,0);
+		assert(lab.getTypeLab(p)==MUR);
+		lab.setTypeLab(p,VIDE);
+		assert(lab.getTypeLab(p)==VIDE);
+} 

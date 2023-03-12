@@ -50,7 +50,7 @@ class Dimension {
 //___________________________________________________________________________________________________________________________________________________________________
 /**
     @brief
-    La ^rocedure setHauteur remplace la hauteur initiale avec celle donnée en paramétre 
+    La procedure setHauteur remplace la hauteur initiale avec celle donnée en paramétre 
     @param a:la nouvelle hauteur
 */
         void setHauteur(int H);

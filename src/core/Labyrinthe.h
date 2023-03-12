@@ -37,16 +37,7 @@ class Labyrinthe {
     */
 
     Labyrinthe();
- //________________________________________________________________________________________________________________________________________________________________________
-
-       /**
-    @brief <B>Construit</B> un objet Labyrinthe .
-    Le le constructeur crée un objet labyrinthe etant un tableau de type de cases 
-    avec la dimension donnée en paramétre 
-    @param d: la dimension du labyrinthe a construire 
-    */
-
-    Labyrinthe(const Dimension& d);
+ 
  //________________________________________________________________________________________________________________________________________________________________________
 
   /**

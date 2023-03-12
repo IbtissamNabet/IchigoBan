@@ -5,6 +5,9 @@
     Position::Position(){
         x=y=0;
     }
+
+    Position::Position(int a, int b): x(a), y(b){}
+
     int Position::getPosX() const{
         return x ;
     }

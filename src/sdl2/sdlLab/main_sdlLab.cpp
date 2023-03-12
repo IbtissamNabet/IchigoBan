@@ -7,3 +7,4 @@ int main (int argc, char** argv) {
 	sdl_ter.sdlLabBoucle();
 	return 0;
 }
+
