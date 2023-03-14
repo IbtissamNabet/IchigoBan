@@ -8,8 +8,6 @@
 
 class Jeu {
 
-private :
-
 	Labyrinthe lab;
     Gardien gard;
     Fraise fraise;
