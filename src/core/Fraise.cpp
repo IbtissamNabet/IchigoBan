@@ -9,7 +9,7 @@ Fraise::Fraise(){
      pos_Fraise.setPosY(1);
 }
 
-Position & Fraise::getPositionFraise(){
+Position Fraise::getPositionFraise(){
     return pos_Fraise;
 }
 
@@ -26,7 +26,7 @@ void  Fraise::gauche(const Labyrinthe & l,const Gardien &g){
     Position p ;
     p.setPosX(x-1); //position de la case ou l'on veut se deplacer 
     p.setPosY(y);
-    if (l.estPositionValide(p) && ((a==x+1)&&(b==y)||(a==x-1)&& (b==y)||(a==x)&&(b==y-1)||(a==x+1)&&(b==y+1))) pos_Fraise.setPosX(x--);
+    if ((l.estPositionValide(p))&&(((a==(x+1))&&(b==y))||((a==(x-1))&& (b==y))||((a==x)&&(b==(y-1)))||((a==x+1)&&(b==(y+1)))))pos_Fraise.setPosX(x--);
 }
 
 void  Fraise::droite(const Labyrinthe & l,const Gardien & g ){
@@ -37,7 +37,7 @@ void  Fraise::droite(const Labyrinthe & l,const Gardien & g ){
     Position p ;
     p.setPosX(x+1);
     p.setPosY(y);
-    if (l.estPositionValide(p) && ((a==x+1)&&(b==y)||(a==x-1)&& (b==y)||(a==x)&&(b==y-1)||(a==x+1)&&(b==y+1))) pos_Fraise.setPosX(x++);
+    if ((l.estPositionValide(p)) && (((a==x+1)&&(b==y))||((a==x-1)&& (b==y))||((a==x)&&(b==y-1))||((a==x+1)&&(b==y+1)))) pos_Fraise.setPosX(x++);
 }
 
 void  Fraise::haut(const Labyrinthe & l ,const Gardien & g){
@@ -48,7 +48,7 @@ void  Fraise::haut(const Labyrinthe & l ,const Gardien & g){
     Position p ;
     p.setPosX(x);
     p.setPosY(y-1);
-    if (l.estPositionValide(p) && ((a==x+1)&&(b==y)||(a==x-1)&& (b==y)||(a==x)&&(b==y-1)||(a==x+1)&&(b==y+1))) pos_Fraise.setPosY(y--);
+    if ((l.estPositionValide(p)) && (((a==x+1)&&(b==y))||((a==x-1)&& (b==y))||((a==x)&&(b==y-1))||((a==x+1)&&(b==y+1)))) pos_Fraise.setPosY(y--);
 }
 
 void  Fraise::bas(const Labyrinthe &l,const Gardien & g){
@@ -59,5 +59,5 @@ void  Fraise::bas(const Labyrinthe &l,const Gardien & g){
     Position p ;
     p.setPosX(x);
     p.setPosY(y+1);
-    if (l.estPositionValide(p) && ((a==x+1)&&(b==y)||(a==x-1)&& (b==y)||(a==x)&&(b==y-1)||(a==x+1)&&(b==y+1))) pos_Fraise.setPosY(y++);
+    if ((l.estPositionValide(p))&& (((a==x+1)&&(b==y))||((a==x-1)&& (b==y))||((a==x)&&(b==y-1))||((a==x+1)&&(b==y+1)))) pos_Fraise.setPosY(y++);
 }

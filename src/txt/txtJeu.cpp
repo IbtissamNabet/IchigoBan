@@ -5,12 +5,12 @@
 #include <unistd.h>
 #endif // WIN32
 #include "winTxt.h"
-#include"Position.h"
-#include "Jeu.h"
+#include"../core/Position.h"
+#include "../core/Jeu.h"
 
-void txtAffichage(WinTXT & win, const Jeu & jeu) {
+void txtAff(WinTXT & win, const Jeu & jeu) {
 	const Labyrinthe& lab = jeu.getLab();
-    const Fraise& f= jeu.getFraise();
+    //sconst Fraise& fraise= jeu.getFraise();
 	const Gardien& gard = jeu.getGardien();
 
 
@@ -27,7 +27,7 @@ void txtAffichage(WinTXT & win, const Jeu & jeu) {
             // Affichage du Gardien
             win.print(gard.getPositionGardien().getPosX(),gard.getPositionGardien().getPosY(),'G');
               // Affichage de la fraise
-            //win.print(f.getPositionFraise().getPosX(),f.getPositionFraise().getPosY(),'F'); 
+            //win.print(fraise.getPositionFraise().getPosX(),fraise.getPositionFraise().getPosY(),'F'); 
 
 	win.draw();
         }
