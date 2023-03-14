@@ -6,7 +6,9 @@
 #endif // WIN32
 #include "winTxt.h"
 #include"../core/Position.h"
-#include "../core/Jeu.h"
+#include"Jeu.h"
+#include"txtJeu.h"
+
 
 void txtAff(WinTXT & win, const Jeu & jeu) {
 	const Labyrinthe& lab = jeu.getLab();

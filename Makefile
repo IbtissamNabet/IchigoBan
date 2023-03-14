@@ -15,7 +15,7 @@ INCLUDE_DIR	= -Isrc -Isrc/core -Isrc/txt -Itxt
 
 
 OBJ_FILES_A = $(OBJ_S)main_sdlLab.o $(OBJ_S)sdlLab.o $(OBJ_C)Labyrinthe.o $(OBJ_C)Dimension.o $(OBJ_C)Position.o
-OBJ_FILES_T = $(OBJ_T)mainTxtJeu.o $(OBJ_T)winTxt.o $(OBJ_T)txtJeu.o $(OBJ_C)Dimension.o $(OBJ_C)Position.o $(OBJ_C)Labyrinthe.o $(OBJ_C)Fraise.o $(OBJ_C)Gardien.o 
+OBJ_FILES_T = $(OBJ_T)mainTxtJeu.o $(OBJ_T)winTxt.o $(OBJ_T)txtJeu.o $(OBJ_C)Dimension.o $(OBJ_C)Position.o $(OBJ_C)Labyrinthe.o $(OBJ_C)Fraise.o $(OBJ_C)Gardien.o $(OBJ_C)Jeu.o 
 
 
 
@@ -49,13 +49,16 @@ $(OBJ_C)Position.o: $(SRC_C)Position.h $(SRC_C)Position.cpp
 $(OBJ_C)Fraise.o: $(SRC_C)Fraise.h $(SRC_C)Fraise.cpp 
 	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRC_C)Fraise.cpp -o $(OBJ_C)Fraise.o
 
+$(OBJ_C)Jeu.o: $(SRC_C)Jeu.h $(SRC_C)Jeu.cpp $(SRC_C)Fraise.h $(SRC_C)Labyrinthe.h $(SRC_C)Gardien.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRC_C)Jeu.cpp -o $(OBJ_C)Jeu.o
+
 $(OBJ_C)Gardien.o: $(SRC_C)Gardien.h $(SRC_C)Gardien.cpp 
 	$(CC) $(CFLAGS) $(INCLUDE) $(INCLUDES)  -c $(SRC_C)Gardien.cpp -o $(OBJ_C)Gardien.o
 
-$(OBJ_T)txtJeu.o: $(SRC_T)txtJeu.h $(SRC_T)txtJeu.cpp $(SRC_T)winTxt.cpp $(SRC_T)winTxt.h  
+$(OBJ_T)txtJeu.o: $(SRC_T)txtJeu.h $(SRC_T)txtJeu.cpp $(SRC_T)winTxt.cpp $(SRC_T)winTxt.h (SRC_C)Jeu.cpp $(SRC_C)Jeu.h
 	$(CC) $(CFLAGS) $(INCLUDE_DIR)  $(INCLUDES) -c $(SRC_T)txtJeu.cpp -o $(OBJ_T)txtJeu.o
 
-$(OBJ_T)mainTxtJeu.o: $(SRC_T)txtJeu.h $(SRC_T)txtJeu.cpp $(SRC_T)winTxt.cpp $(SRC_T)winTxt.h  
+$(OBJ_T)mainTxtJeu.o: $(SRC_T)txtJeu.h $(SRC_T)txtJeu.cpp $(SRC_T)winTxt.cpp $(SRC_T)winTxt.h  $(SRC_C)Jeu.cpp $(SRC_C)Jeu.h
 	$(CC) $(CFLAGS) $(INCLUDE_DIR)  $(INCLUDES) -c $(SRC_T)mainTxtJeu.cpp -o $(OBJ_T)mainTxtJeu.o
 
 
