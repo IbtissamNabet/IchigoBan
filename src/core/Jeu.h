@@ -1,22 +1,29 @@
 #ifndef _JEU_H
 #define _JEU_H
 
-#include "Labyrinthe.h"
+#include "Niveau.h"
 #include "Fraise.h"
 #include "Gardien.h"
 
 
 class Jeu {
 
+<<<<<<< Updated upstream
 	Labyrinthe lab;
+=======
+private :
+
+    Niveau niv;
+>>>>>>> Stashed changes
     Gardien gard;
-    Fraise fraise;
+    Fraise * fraises;
 	  
 
 public :
     Jeu();
-    const Labyrinthe & getLab () const;                    
-    const Fraise& getFraise () const;                          
+    Jeu(Niveau N, Gardien G);
+    const Niveau& getNiveau () const;                    
+ //   const Fraise& getFraise () const;                          
     const Gardien& getGardien() const;
 
 };

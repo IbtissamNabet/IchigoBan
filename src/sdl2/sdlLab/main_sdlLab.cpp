@@ -2,9 +2,10 @@
 
 int main (int argc, char** argv) {
 
-    Labyrinthe ter;
-	SdlLab sdl_ter(ter);
-	sdl_ter.sdlLabBoucle();
+	
+    Jeu game;
+	SdlLab sdl_Jeu(game);
+	sdl_Jeu.sdlLabBoucle();
 	return 0;
 }
 

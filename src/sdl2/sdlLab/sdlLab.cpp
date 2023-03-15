@@ -84,8 +84,8 @@ SDL_Texture * Image::getTexture() const {return m_texture;}
 void Image::setSurface(SDL_Surface * surf) {m_surface = surf;}
 
 
-
-SdlLab::SdlLab (const Labyrinthe & terrain) : lab(terrain) {
+SdlLab::SdlLab (const Jeu & partie){
+    jeu=partie;
     // Initialisation de la SDL
 
     ///ouvrir le module des fonctions videos 
@@ -104,8 +104,8 @@ SdlLab::SdlLab (const Labyrinthe & terrain) : lab(terrain) {
     }
 
 	int dimx, dimy;
-	dimx = lab.getDim().getLargeur();
-	dimy = lab.getDim().getHauteur();
+	dimx = jeu.getNiveau().getLab().getDim().getLargeur();
+	dimy = jeu.getNiveau().getLab().getDim().getHauteur();
 	dimx = dimx * TAILLE_SPRITE;
 	dimy = dimy * TAILLE_SPRITE;
 
@@ -124,6 +124,8 @@ SdlLab::SdlLab (const Labyrinthe & terrain) : lab(terrain) {
     im_mur.loadFromFile("data/mur.png",renderer);
     im_vide.loadFromFile("data/vide.png",renderer);
     im_empcible.loadFromFile("data/empcible.png",renderer);
+    im_fraise.loadFromFile("data/fraise.png",renderer);
+    im_gardien.loadFromFile("data/gardien.png",renderer);
 
 }
 
@@ -143,16 +145,28 @@ void SdlLab::sdlLabAfficher () {
 
 
     // Afficher les murs, les emplacements cibles et les emplacements vides
-	for (x=0;x<lab.getDim().getLargeur();++x){
-		for (y=0;y<lab.getDim().getHauteur();++y){
+	for (x=0;x<jeu.getNiveau().getLab().getDim().getLargeur();++x){
+		for (y=0;y<jeu.getNiveau().getLab().getDim().getHauteur();++y){
             p=Position(x,y);
-			if (lab.getTypeLab(p)=='#')
+			if (jeu.getNiveau().getLab().getTypeLab(p)=='#')
 				im_mur.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
-			else if (lab.getTypeLab(p)=='.')
+			else if (jeu.getNiveau().getLab().getTypeLab(p)=='.')
 				im_vide.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
-            else if (lab.getTypeLab(p)=='*')
+            else if (jeu.getNiveau().getLab().getTypeLab(p)=='*')
             	im_empcible.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
         }
+    }
+
+    //Afficher le gardien
+    x=jeu.getGardien().getPositionGardien().getPosX();
+    y=jeu.getGardien().getPositionGardien().getPosY();
+    im_gardien.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
+
+    //Afficher les fraises
+    for(int i=0; i<jeu.getNiveau().getNbFraises(); i++){
+        
+    }
+
     }
 
 

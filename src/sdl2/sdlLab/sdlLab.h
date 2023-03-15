@@ -6,7 +6,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 
-#include "Labyrinthe.h" 
+#include "Jeu.h" 
 
 /**
     La classe gerant le labyrinthe avec un affichage SDL
@@ -34,7 +34,7 @@ class SdlLab {
 
 private :
 
-	Labyrinthe lab;
+	Jeu jeu;
 
     SDL_Window * window;
     SDL_Renderer * renderer;
@@ -49,11 +49,13 @@ private :
     Image im_mur;
     Image im_vide;
     Image im_empcible;
+    Image im_gardien;
+    Image im_fraise;
 
     
 public :
 
-    SdlLab(const Labyrinthe & terrain);
+    SdlLab(const Jeu & partie);
     ~SdlLab ();
     void sdlLabAfficher();
     void sdlLabBoucle();

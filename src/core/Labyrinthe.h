@@ -18,12 +18,11 @@
    @brief La classe Labyrinthe contient une enumération pour indiqué le type de case figurante dans le labyrinthe , sa dimention et un tableau 2D
    de ses types de cases  .
 */
+enum TypeLab { VIDE = '.' , MUR = '#' ,EMPCIBLE='*' };
 
 class Labyrinthe {
 
     private : 
-
-    enum TypeLab { VIDE = '.' , MUR = '#' ,EMPCIBLE='*' };
 
     Dimension dimL;
 
@@ -44,7 +43,7 @@ class Labyrinthe {
     @brief <B>Detruit</B> un objet Labyrinthe .
     Le destucteur désalouele tableau 2D crée et met la dimension a 0
  
-    */
+*/
 
 
     ~Labyrinthe();
