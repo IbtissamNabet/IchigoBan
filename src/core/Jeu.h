@@ -8,13 +8,9 @@
 
 class Jeu {
 
-<<<<<<< Updated upstream
-	Labyrinthe lab;
-=======
 private :
 
     Niveau niv;
->>>>>>> Stashed changes
     Gardien gard;
     Fraise * fraises;
 	  
@@ -22,9 +18,9 @@ private :
 public :
     Jeu();
     Jeu(Niveau N, Gardien G);
-    const Niveau& getNiveau () const;                    
- //   const Fraise& getFraise () const;                          
-    const Gardien& getGardien() const;
+    Niveau getNiveau () const;                    
+    Fraise * getFraise () const;                          
+    Gardien getGardien() const;
 
 };
 #endif

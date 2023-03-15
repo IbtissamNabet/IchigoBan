@@ -14,7 +14,7 @@ INCLUDES = -I./extern/include -Isrc -Isrc/core -I src/sdl2
 INCLUDE_DIR	= -Isrc -Isrc/core -Isrc/txt -Itxt
 
 
-OBJ_FILES_A = $(OBJ_S)main_sdlLab.o $(OBJ_S)sdlLab.o $(OBJ_C)Labyrinthe.o $(OBJ_C)Dimension.o $(OBJ_C)Position.o
+OBJ_FILES_A = $(OBJ_S)main_sdlLab.o $(OBJ_S)sdlLab.o $(OBJ_C)Labyrinthe.o $(OBJ_C)Dimension.o $(OBJ_C)Position.o $(OBJ_C)Fraise.o $(OBJ_C)Gardien.o $(OBJ_C)Niveau.o $(OBJ_C)Jeu.o
 OBJ_FILES_T = $(OBJ_T)mainTxtJeu.o $(OBJ_T)winTxt.o $(OBJ_T)txtJeu.o $(OBJ_C)Dimension.o $(OBJ_C)Position.o $(OBJ_C)Labyrinthe.o $(OBJ_C)Fraise.o $(OBJ_C)Gardien.o $(OBJ_C)Jeu.o 
 
 
@@ -23,7 +23,7 @@ CC = g++
 CFLAGS = -Wall -ggdb
 
 
-all: $(BIN)$(EXEC_NAME_A) $(BIN)$(EXEC_NAME_T)
+all: $(BIN)$(EXEC_NAME_A) 
 
 $(BIN)$(EXEC_NAME_A): $(OBJ_FILES_A)
 	$(CC) $(OBJ_FILES_A) -o $(BIN)$(EXEC_NAME_A)  -lSDL2 -lSDL2_ttf -lSDL2_image
@@ -33,7 +33,7 @@ $(BIN)$(EXEC_NAME_T): $(OBJ_FILES_T)
 
 $(OBJ_S)main_sdlLab.o: $(SRC_S)sdlLab/main_sdlLab.cpp $(SRC_S)sdlLab/sdlLab.h $(SRC_C)Jeu.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRC_S)sdlLab/main_sdlLab.cpp -o $(OBJ_S)main_sdlLab.o
-$(OBJ_S)sdlLab.o: $(SRC_S)sdlLab/sdlLab.h $(SRC_S)sdlLab/sdlLab.cpp 
+$(OBJ_S)sdlLab.o: $(SRC_S)sdlLab/sdlLab.h $(SRC_S)sdlLab/sdlLab.cpp $(SRC_C)Jeu.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRC_S)sdlLab/sdlLab.cpp -o $(OBJ_S)sdlLab.o
 $(OBJ_C)Jeu.o: $(SRC_C)Jeu.h $(SRC_C)jeu.cpp $(SRC_C)Niveau.h $(SRC_C)Fraise.h $(SRC_C)Gardien.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRC_C)Jeu.cpp -o $(OBJ_C)Jeu.o

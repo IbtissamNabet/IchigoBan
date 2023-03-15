@@ -1,10 +1,8 @@
-
+#include "Jeu.h"
 #include <cassert>
 #include <time.h>
 #include <stdlib.h>
 #include "sdlLab.h"
-#include "Labyrinthe.h" 
-
 #include <iostream>
 using namespace std;
 
@@ -175,7 +173,7 @@ void SdlLab::sdlLabAfficher () {
     positionTitre.x = 270;positionTitre.y = 49;positionTitre.w = 100;positionTitre.h = 30;
     SDL_RenderCopy(renderer,font_im.getTexture(),nullptr,&positionTitre);*/
 
-}
+
 
 void SdlLab::sdlLabBoucle(){
     SDL_Event events;

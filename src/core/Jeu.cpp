@@ -16,7 +16,7 @@ Jeu::Jeu(Niveau N, Gardien G){
     }
 }
 
-const Niveau & Jeu::getNiveau () const {
+Niveau Jeu::getNiveau () const {
     return niv;
 }  
 
@@ -24,6 +24,6 @@ Fraise * Jeu::getFraise ()const{
     return fraises;
 }  
 
-const Gardien& Jeu::getGardien() const{
+Gardien Jeu::getGardien() const{
     return gard;
 }
