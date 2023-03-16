@@ -17,9 +17,10 @@ private :
 
 public :
     Jeu();
+    ~Jeu();
     Jeu(Niveau N, Gardien G);
     const Niveau & getNiveau () const;                    
-    Fraise * getFraise () const;                          
+    Fraise* getFraise () const;                          
     Gardien getGardien() const;
 
 };

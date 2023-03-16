@@ -1,9 +1,13 @@
+#include "Jeu.h"
 #include "winTxt.h"
 #include "txtJeu.h"
-#include"../core/Jeu.h"
+#include <unistd.h>
 
 int main () {
-    termClear();
-	//Jeu jeu;
+	termClear();
+	Jeu jeu;
+	txtBoucle(jeu);
+	
+    
 	return 0;
 }

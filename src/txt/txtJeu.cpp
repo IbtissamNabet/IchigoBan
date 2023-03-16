@@ -11,27 +11,39 @@
 
 
 void txtAff(WinTXT & win, const Jeu & jeu) {
-	const Labyrinthe& lab = jeu.getLab();
-    //sconst Fraise& fraise= jeu.getFraise();
+	const Labyrinthe& lab = jeu.getNiveau().getLab();
+    Fraise * fraise= jeu.getFraise();
 	const Gardien& gard = jeu.getGardien();
-
 
 	
 	win.clear();
 
     // Affichage des murs 
 	Position p;
-	for(int x=0;x<lab.getDim().getHauteur();++x){
+	for(int x=0;x<lab.getDim().getLargeur();++x){
 		p.setPosX(x);
-		for(int y=0;y<lab.getDim().getLargeur();++y){	
+		for(int y=0;y<lab.getDim().getHauteur();++y){	
 			p.setPosY(y);
 			win.print(x,y,lab.getTypeLab(p));
             // Affichage du Gardien
             win.print(gard.getPositionGardien().getPosX(),gard.getPositionGardien().getPosY(),'G');
-              // Affichage de la fraise
-            //win.print(fraise.getPositionFraise().getPosX(),fraise.getPositionFraise().getPosY(),'F'); 
+            // Affichage de la fraise
+
+			for(int i=0;i<jeu.getNiveau().getNbFraises();i++){
+				win.print(fraise[i].getPositionFraise().getPosX(),fraise[i].getPositionFraise().getPosY(),'F');
+			}
+            
 
 	win.draw();
         }
     }
+
 }
+void txtBoucle (Jeu & jeu) {
+	// Creation d'une nouvelle fenetre en mode texte
+	
+    WinTXT win (jeu.getNiveau().getLab().getDim().getLargeur(),jeu.getNiveau().getLab().getDim().getHauteur());
+	    txtAff(win,jeu);
+	
+}
+
