@@ -16,7 +16,7 @@ Jeu::Jeu(Niveau N, Gardien G){
     }
 }
 
-Niveau Jeu::getNiveau () const {
+const Niveau &Jeu::getNiveau () const {
     return niv;
 }  
 

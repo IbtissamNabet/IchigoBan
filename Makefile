@@ -35,7 +35,7 @@ $(OBJ_S)main_sdlLab.o: $(SRC_S)sdlLab/main_sdlLab.cpp $(SRC_S)sdlLab/sdlLab.h $(
 	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRC_S)sdlLab/main_sdlLab.cpp -o $(OBJ_S)main_sdlLab.o
 $(OBJ_S)sdlLab.o: $(SRC_S)sdlLab/sdlLab.h $(SRC_S)sdlLab/sdlLab.cpp $(SRC_C)Jeu.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRC_S)sdlLab/sdlLab.cpp -o $(OBJ_S)sdlLab.o
-$(OBJ_C)Jeu.o: $(SRC_C)Jeu.h $(SRC_C)jeu.cpp $(SRC_C)Niveau.h $(SRC_C)Fraise.h $(SRC_C)Gardien.h
+$(OBJ_C)Jeu.o: $(SRC_C)Jeu.h $(SRC_C)Jeu.cpp $(SRC_C)Niveau.h $(SRC_C)Fraise.h $(SRC_C)Gardien.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRC_C)Jeu.cpp -o $(OBJ_C)Jeu.o
 $(OBJ_C)Niveau.o: $(SRC_C)Niveau.h $(SRC_C)Niveau.cpp $(SRC_C)Labyrinthe.h $(SRC_C)Position.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRC_C)Niveau.cpp -o $(OBJ_C)Niveau.o

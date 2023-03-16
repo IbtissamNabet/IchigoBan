@@ -49,7 +49,7 @@ public:
 /**   
     @brief la fonction getNbFraises renvoie le nombre de fraise du niveau
 */
-    int getNbFraises();
+    int getNbFraises() const;
 //________________________________________________________________________________________________________________________________________________________________________
 
 /**

@@ -7,7 +7,7 @@
 using namespace std ;
 
 const char lab1[15][40] = {
- ".......................................",
+ "#######################################",
  "#.###....##........###.......##########",
  "#.#####..##...####.#........########..#",
  "#........##........#########..........#",
@@ -48,12 +48,15 @@ Labyrinthe::Labyrinthe () {
 
 
  Labyrinthe::~Labyrinthe(){
-	delete [] tabLab ;
-	if(tabLab!=NULL) {
-		tabLab=nullptr;
-	}
 	dimL.setHauteur(0);
 	dimL.setLargeur(0);
+	if(tabLab!=NULL) {
+		delete[]tabLab ;
+		tabLab=nullptr;
+	
+
+	}
+	
  }
 
 

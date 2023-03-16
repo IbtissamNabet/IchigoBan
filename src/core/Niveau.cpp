@@ -16,7 +16,7 @@ void Niveau::setNum(int n){
     num=n;
 }
 
-int Niveau::getNbFraises(){
+int Niveau::getNbFraises() const {
     return nbFraises;
 }
 
