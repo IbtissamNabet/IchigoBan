@@ -71,14 +71,14 @@ void Jeu::toucheClavier (const char touche) {
         switch (touche)
             {
             case 'd':
-                 /*   if((pfx-1==pgx) && (pfy==pgy)) 
+                     if((pfx-1==pgx) && (pfy==pgy)) 
                         {
 
                         gard.droite(lab);
                         fraises[i].droite(lab,gard);
                         break;
-                    }*/
-                    gard.droite(lab);
+                    }
+                    else gard.droite(lab);
 
             case 'g':
                     if((pfx+1==pgx) && (pfy==pgy))
