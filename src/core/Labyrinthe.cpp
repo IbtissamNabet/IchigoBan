@@ -4,6 +4,7 @@
 #include <string>
 
 
+
 using namespace std ;
 
 const char lab1[15][40] = {
@@ -115,4 +116,5 @@ void Labyrinthe::testRegression() const {
 		assert(lab.getTypeLab(p)==MUR);
 		lab.setTypeLab(p,VIDE);
 		assert(lab.getTypeLab(p)==VIDE);
+		 cout<<endl<<"fin de test de regression pour Labyrinthe " <<endl;
 } 

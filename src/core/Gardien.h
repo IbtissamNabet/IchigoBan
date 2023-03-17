@@ -19,11 +19,10 @@
 
 */
 class Gardien {
-private:
-
-    Position pos_gardien; 
-
+    
 public :
+Position pos_gardien; 
+
  /**
     @brief <B>Construit</B> un objet Gardien .
     Le  constructeur crée un objet Gardien par defaut a la premiere case du tableau 2D
@@ -73,7 +72,7 @@ void haut(const Labyrinthe & l );
 void bas(const Labyrinthe &l);
 
 
-
+void testRegression();
 
 
 

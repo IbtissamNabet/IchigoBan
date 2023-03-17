@@ -11,17 +11,19 @@ class Jeu {
 private :
 
     Niveau niv;
-    Gardien gard;
+    
     Fraise * fraises;
 	  
 
 public :
+    Gardien gard;
     Jeu();
     ~Jeu();
     Jeu(Niveau N, Gardien G);
     const Niveau & getNiveau () const;                    
     Fraise* getFraise () const;                          
     Gardien getGardien() const;
+    void toucheClavier(const char touche);
 
 };
 #endif

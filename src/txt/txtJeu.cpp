@@ -13,7 +13,7 @@
 void txtAff(WinTXT & win, const Jeu & jeu) {
 	const Labyrinthe& lab = jeu.getNiveau().getLab();
     Fraise * fraise= jeu.getFraise();
-	const Gardien& gard = jeu.getGardien();
+	//const Gardien& gard = jeu.getGardien();
 
 	
 	win.clear();
@@ -26,7 +26,7 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 			p.setPosY(y);
 			win.print(x,y,lab.getTypeLab(p));
             // Affichage du Gardien
-            win.print(gard.getPositionGardien().getPosX(),gard.getPositionGardien().getPosY(),'G');
+            win.print(jeu.getGardien().getPositionGardien().getPosX(),jeu.getGardien().getPositionGardien().getPosY(),'G');
             // Affichage de la fraise
 
 			for(int i=0;i<jeu.getNiveau().getNbFraises();i++){
@@ -40,10 +40,43 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 
 }
 void txtBoucle (Jeu & jeu) {
-	// Creation d'une nouvelle fenetre en mode texte
-	
+		// Creation d'une nouvelle fenetre en mode texte
+	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
     WinTXT win (jeu.getNiveau().getLab().getDim().getLargeur(),jeu.getNiveau().getLab().getDim().getHauteur());
+
+	bool ok = true;
+	int c;
+
+	do {
 	    txtAff(win,jeu);
-	
+
+        #ifdef _WIN32
+        Sleep(100);
+		#else
+		usleep(100000);
+        #endif // WIN32
+
+		c = win.getCh();
+		switch (c) {
+			case 's':
+				jeu.toucheClavier('g');
+				break;
+			case 'f':
+				jeu.toucheClavier('d');
+				break;
+			case 'e':
+				jeu.toucheClavier('h');
+				break;
+			case 'd':
+				jeu.toucheClavier('b');
+				break;
+			case 'q':
+				ok = false;
+				break;
+		}
+
+	} while (ok);
+
 }
+
 

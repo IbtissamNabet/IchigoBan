@@ -1,6 +1,8 @@
 #include"Gardien.h"
+#include<cassert>
+#include<iostream>
 
-
+using namespace std;
 
 
 
@@ -50,7 +52,9 @@ void Gardien::haut(const Labyrinthe & l ){
     p.setPosX(x);
     p.setPosY(y-1);
 
-    if (l.estPositionValide(p)) pos_gardien.setPosX(y--) ;
+    if (l.estPositionValide(p)) {
+        pos_gardien.setPosX(y--) ;
+    }
 
 }
 void Gardien::bas(const Labyrinthe &l){
@@ -62,6 +66,36 @@ void Gardien::bas(const Labyrinthe &l){
     p.setPosY(y+1);
 
     if (l.estPositionValide(p)) pos_gardien.setPosX(y++) ;
+
+
+}
+void Gardien::testRegression(){
+    Gardien g ;
+    Labyrinthe l;
+
+    g.gauche(l);
+    assert((g.getPositionGardien().getPosX())==1);
+    assert((g.getPositionGardien().getPosY())==1);
+    g.droite(l);
+    assert((g.getPositionGardien().getPosX())==2);
+    assert((g.getPositionGardien().getPosY())==1);
+    g.haut(l);
+     assert((g.getPositionGardien().getPosX())==2);
+    assert((g.getPositionGardien().getPosY())==1);
+    g.bas(l);
+    assert((g.getPositionGardien().getPosX())==2);
+    assert((g.getPositionGardien().getPosY())==2);
+
+     cout<<endl<<"fin de test de regression pour Gardien " <<endl;
+    
+    
+
+
+
+
+
+
+
 
 
 }

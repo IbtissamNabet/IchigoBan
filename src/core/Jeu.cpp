@@ -4,10 +4,10 @@
 Jeu::Jeu():niv(), gard(){
     Position p,p1,p2,p3,p4;
     p.setPosX(2);
-    p.setPosY(1);
+    p.setPosY(6);
     niv.ajouterFraise(p);
-    p1.setPosX(2);
-    p1.setPosY(2);
+    p1.setPosX(6);
+    p1.setPosY(3);
     niv.ajouterFraise(p1);
     p2.setPosX(3);
     p2.setPosY(1);
@@ -55,3 +55,64 @@ Fraise * Jeu::getFraise ()const{
 Gardien Jeu::getGardien() const{
     return gard;
 }
+
+void Jeu::toucheClavier (const char touche) {
+    Labyrinthe lab;
+    Position  pf,pg;
+    int pfx,pfy,pgx,pgy;
+    for (int i=0; i<niv.getNbFraises(); i++)
+        {
+
+        pf =fraises[i].getPositionFraise();
+        pfx=pf.getPosX(); pfy=pf.getPosY();
+        pg=gard.getPositionGardien();
+        pgx=pg.getPosX(); pgy=pg.getPosY();
+
+        switch (touche)
+            {
+            case 'd':
+                 /*   if((pfx-1==pgx) && (pfy==pgy)) 
+                        {
+
+                        gard.droite(lab);
+                        fraises[i].droite(lab,gard);
+                        break;
+                    }*/
+                    gard.droite(lab);
+
+            case 'g':
+                    if((pfx+1==pgx) && (pfy==pgy))
+                         {
+                        gard.gauche(lab);
+                        fraises[i].gauche(lab,gard);
+                        break;
+
+                    }
+                    else gard.gauche(lab);
+
+            case 'h':
+                    if((pfx==pgx) && (pfy+1==pgy)) 
+                        {
+                        gard.haut(lab);
+                        fraises[i].haut(lab,gard);
+                        break;
+
+                    }
+                    else gard.haut(lab);
+
+            case 'b':
+                        if((pfx==pgx) && (pfy-1==pgy)) 
+                            {
+                            gard.bas(lab);
+                            fraises[i].bas(lab,gard);
+                            break;
+
+                        }
+                        else gard.bas(lab);
+
+            }
+
+        }
+    }
+
+

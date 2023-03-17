@@ -1,7 +1,9 @@
 #include"Fraise.h"
 #include"Dimension.h"
 #include"Position.h"
-
+#include<cassert>
+#include<iostream>
+using namespace std;
 
 
 Fraise::Fraise(){
@@ -60,4 +62,34 @@ void  Fraise::bas(const Labyrinthe &l,const Gardien & g){
     p.setPosX(x);
     p.setPosY(y+1);
     if ((l.estPositionValide(p))&& (((a==x+1)&&(b==y))||((a==x-1)&& (b==y))||((a==x)&&(b==y-1))||((a==x+1)&&(b==y+1)))) pos_Fraise.setPosY(y++);
+}
+
+
+void Fraise::testRegression(){
+    Gardien g ;
+    Labyrinthe l;
+    Fraise f;
+    Position p;
+    p.setPosX(3);
+    p.setPosY(3);
+    f.setPositionFraise(p);
+
+    f.gauche(l,g);
+    assert((f.getPositionFraise().getPosX())==2);
+    assert(f.getPositionFraise().getPosX()==3);
+
+    g.droite(l);
+    assert((f.getPositionFraise().getPosX())==3);
+    assert(f.getPositionFraise().getPosX()==3);
+    g.haut(l);
+    assert((f.getPositionFraise().getPosX())==3);
+    assert((f.getPositionFraise().getPosX())==2); 
+    g.bas(l);
+    assert((f.getPositionFraise().getPosX())==3);
+    assert((f.getPositionFraise().getPosX())==3); 
+    
+    cout<<endl<<"fin de test de regression pour Fraise " <<endl;
+
+    
+    
 }
