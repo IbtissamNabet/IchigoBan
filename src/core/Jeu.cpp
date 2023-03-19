@@ -62,56 +62,107 @@ Gardien Jeu::getGardien() const{
 
 void Jeu::toucheClavier (const char touche) {
     Labyrinthe lab;
-    Position  pf,pg;
+    Position  pf,pg,p;
     int pfx,pfy,pgx,pgy;
-    for (int i = 0; i < niv.getNbFraises(); i++) {
-        pf = fraises[i].getPositionFraise();
-        pfx = pf.getPosX(); 
-        pfy = pf.getPosY();
-        pg = gard.getPositionGardien();
-        pgx = pg.getPosX(); 
-        pgy = pg.getPosY();
-
-        switch (touche) {
-            case 'd':
-                if ((pfx-1 == pgx) && (pfy == pgy)) {
+    pg = gard.getPositionGardien();
+    pgx = pg.getPosX(); 
+    pgy = pg.getPosY();
+    int j=-1;
+    int k=-1;
+    switch (touche)
+    {
+        case 'd':
+            for (int i = 0; i < niv.getNbFraises(); i++) {
+            pf = fraises[i].getPositionFraise();
+            pfx = pf.getPosX(); 
+            pfy = pf.getPosY();
+                if ((pfx == pgx+1) && (pfy == pgy)) {
+                    j=i;
+                }
+                if ((pfx == pgx+2) && (pfy == pgy)) {
+                    k=i;
+                }            
+            }
+            p.setPosX(pgx+2);
+            p.setPosY(pgy);
+            if ((j!=-1)&&(k==-1)&&lab.estPositionValide(p)){
+                gard.droite(lab);
+                fraises[j].droite(lab, gard);
+            }
+            else if(j==-1){
                     gard.droite(lab);
-                    fraises[i].droite(lab, gard);
-                } else {
-                    gard.droite(lab);
-                }
-                break;
+            }
+            break;
 
-            case 'g':
-                if ((pfx+1 == pgx) && (pfy == pgy)) {
+        case 'g':
+            for (int i = 0; i < niv.getNbFraises(); i++) {
+            pf = fraises[i].getPositionFraise();
+            pfx = pf.getPosX(); 
+            pfy = pf.getPosY();
+                if ((pfx == pgx-1) && (pfy == pgy)) {
+                    j=i;
+                }
+                if ((pfx == pgx-2) && (pfy == pgy)) {
+                    k=i;
+                }            
+            }
+            p.setPosX(pgx-2);
+            p.setPosY(pgy);
+            if ((j!=-1)&&(k==-1)&&lab.estPositionValide(p)){
+                gard.gauche(lab);
+                fraises[j].gauche(lab, gard);
+            }
+            else if(j==-1){
                     gard.gauche(lab);
-                    for (int j = 0; j < niv.getNbFraises(); j++) {
-                        if ((fraises[j].getPositionFraise().getPosX() == pgx-1) && (fraises[j].getPositionFraise().getPosY() == pgy)) {
-                            fraises[j].gauche(lab, gard);
-                        }
-                    }
-                } else {
-                    gard.gauche(lab);
-                }
-                break;
+            }
+            break;
 
-            case 'h':
-                if ((pfx == pgx) && (pfy+1 == pgy)) {
-                    gard.haut(lab);
-                    fraises[i].haut(lab, gard);
-                } else {
-                    gard.haut(lab);
+        case 'h':
+            for (int i = 0; i < niv.getNbFraises(); i++) {
+            pf = fraises[i].getPositionFraise();
+            pfx = pf.getPosX(); 
+            pfy = pf.getPosY();
+                if ((pfx == pgx) && (pfy == pgy-1)) {
+                    j=i;
                 }
-                break;
+                if ((pfx == pgx) && (pfy == pgy-2)) {
+                    k=i;
+                }            
+            }
+            p.setPosX(pgx);
+            p.setPosY(pgy-2);
+            if ((j!=-1)&&(k==-1)&&lab.estPositionValide(p)){
+                gard.haut(lab);
+                fraises[j].haut(lab, gard);
+            }
+            else if(j==-1){
+                    gard.haut(lab);
+            }
+            break;
 
-            case 'b':
-                if ((pfx == pgx) && (pfy-1 == pgy)) {
-                    gard.bas(lab);
-                    fraises[i].bas(lab, gard);
-                } else {
-                    gard.bas(lab);
+        case 'b':
+            for (int i = 0; i < niv.getNbFraises(); i++) {
+            pf = fraises[i].getPositionFraise();
+            pfx = pf.getPosX(); 
+            pfy = pf.getPosY();
+                if ((pfx == pgx) && (pfy == pgy+1)) {
+                    j=i;
                 }
-                break;
-        }
-    }
+                if ((pfx == pgx) && (pfy == pgy+2)) {
+                    k=i;
+                }            
+            }
+            p.setPosX(pgx);
+            p.setPosY(pgy+2);
+            if ((j!=-1)&&(k==-1)&&lab.estPositionValide(p)){
+                gard.bas(lab);
+                fraises[j].bas(lab, gard);
+            }
+            else if(j==-1){
+                    gard.bas(lab);
+            }
+            break;        
+        default:
+            break;
+    } 
 }

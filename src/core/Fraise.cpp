@@ -27,7 +27,7 @@ void Fraise::gauche(const Labyrinthe& l, const Gardien& g) {
     Position p;
     p.setPosX(x - 1);  // position de la case où l'on veut se déplacer
     p.setPosY(y);
-    if (l.estPositionValide(p) && a == x && b == y - 1) {
+    if (l.estPositionValide(p) && a == x && b == y) {
         pos_Fraise.setPosX(x - 1);
     }
     else {
@@ -42,7 +42,7 @@ void  Fraise::droite(const Labyrinthe & l,const Gardien & g ){
     Position p ;
     p.setPosX(x+1);
     p.setPosY(y);
-    if (l.estPositionValide(p) && a == x && b == y + 1) {
+    if (l.estPositionValide(p) && a == x && b == y) {
     pos_Fraise.setPosX(x + 1);
 }
     else {
@@ -57,7 +57,7 @@ void Fraise::haut(const Labyrinthe &l, const Gardien &g) {
     Position p;
     p.setPosX(x);
     p.setPosY(y - 1);
-   if (l.estPositionValide(p) && a == x && b == y - 1) {
+   if (l.estPositionValide(p) && a == x && b == y) {
     pos_Fraise.setPosY(y - 1);
 }
     else {
@@ -73,7 +73,7 @@ void Fraise::bas(const Labyrinthe &l, const Gardien &g) {
     Position p;
     p.setPosX(x);
     p.setPosY(y + 1);
-    if (l.estPositionValide(p) && a == x && b == y + 1) {
+    if (l.estPositionValide(p) && a == x && b == y) {
     pos_Fraise.setPosY(y + 1);
 }
     else {
