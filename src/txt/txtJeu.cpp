@@ -4,79 +4,87 @@
 #else
 #include <unistd.h>
 #endif // WIN32
+#include"Jeu.h"
 #include "winTxt.h"
 #include"../core/Position.h"
-#include"Jeu.h"
+
 #include"txtJeu.h"
-
-
+using namespace std;
 void txtAff(WinTXT & win, const Jeu & jeu) {
-	const Labyrinthe& lab = jeu.getNiveau().getLab();
-    Fraise * fraise= jeu.getFraise();
-	//const Gardien& gard = jeu.getGardien();
+    const Labyrinthe& lab = jeu.getNiveau().getLab();
+    const Fraise* fraises = jeu.getFraise();
+    const int nbFraises = jeu.getNiveau().getNbFraises();
+    const Gardien& gardien = jeu.getGardien();
 
-	
-	win.clear();
+    win.clear();
 
     // Affichage des murs 
-	Position p;
-	for(int x=0;x<lab.getDim().getLargeur();++x){
-		p.setPosX(x);
-		for(int y=0;y<lab.getDim().getHauteur();++y){	
-			p.setPosY(y);
-			win.print(x,y,lab.getTypeLab(p));
-            // Affichage du Gardien
-            win.print(jeu.getGardien().getPositionGardien().getPosX(),jeu.getGardien().getPositionGardien().getPosY(),'G');
-            // Affichage de la fraise
-
-			for(int i=0;i<jeu.getNiveau().getNbFraises();i++){
-				win.print(fraise[i].getPositionFraise().getPosX(),fraise[i].getPositionFraise().getPosY(),'F');
-			}
-            
-
-	win.draw();
+    for(int x=0;x<lab.getDim().getLargeur();++x){
+        for(int y=0;y<lab.getDim().getHauteur();++y){  
+            win.print(x,y,lab.getTypeLab(Position(x, y)));
         }
     }
 
+    // Affichage du Gardien
+    win.print(gardien.getPositionGardien().getPosX(),gardien.getPositionGardien().getPosY(),'G');
+
+    // Affichage des fraises
+    for(int i=0;i<nbFraises;i++){
+        win.print(fraises[i].getPositionFraise().getPosX(),fraises[i].getPositionFraise().getPosY(),'F');
+    }
+
+    win.draw();
 }
-void txtBoucle (Jeu & jeu) {
-		// Creation d'une nouvelle fenetre en mode texte
-	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
+
+
+   void txtBoucle (Jeu & jeu) {
+    // Creation d'une nouvelle fenetre en mode texte
+    // => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
     WinTXT win (jeu.getNiveau().getLab().getDim().getLargeur(),jeu.getNiveau().getLab().getDim().getHauteur());
 
-	bool ok = true;
-	int c;
+    bool ok = true;
+    int c;
 
-	do {
-	    txtAff(win,jeu);
+    do {
+        txtAff(win,jeu);
+
+        // Ajout de lignes pour le débogage
+        std::cout << "Attente d'une touche..." << std::endl;
+        std::cout << "Dernière touche : " << c << std::endl;
 
         #ifdef _WIN32
         Sleep(100);
-		#else
-		usleep(100000);
+        #else
+        usleep(100000);
         #endif // WIN32
 
-		c = win.getCh();
-		switch (c) {
-			case 's':
-				jeu.toucheClavier('g');
-				break;
-			case 'f':
-				jeu.toucheClavier('d');
-				break;
-			case 'e':
-				jeu.toucheClavier('h');
-				break;
-			case 'd':
-				jeu.toucheClavier('b');
-				break;
-			case 'q':
-				ok = false;
-				break;
-		}
+        c = win.getCh();
 
-	} while (ok);
+        // Ajout de lignes pour le débogage
+        std::cout << "Touche pressée : " << c << std::endl;
 
+        switch (c) {
+            case 's':
+                std::cout << "Touche G pressée" << std::endl;
+                jeu.toucheClavier('g');
+                break;
+            case 'f':
+                std::cout << "Touche D pressée" << std::endl;
+                jeu.toucheClavier('d');
+                break;
+            case 'e':
+                std::cout << "Touche H pressée" << std::endl;
+                jeu.toucheClavier('h');
+                break;
+            case 'd':
+                std::cout << "Touche B pressée" << std::endl;
+                jeu.toucheClavier('b');
+                break;
+            case 'q':
+				std::cout << "Touche Q pressée" << std::endl;
+                ok = false;
+                break;
+        }
+
+    } while (ok);
 }
-
-

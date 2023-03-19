@@ -11,7 +11,7 @@ Fraise::Fraise(){
      pos_Fraise.setPosY(1);
 }
 
-Position Fraise::getPositionFraise(){
+Position Fraise::getPositionFraise()const{
     return pos_Fraise;
 }
 
@@ -19,18 +19,21 @@ void  Fraise::setPositionFraise(const Position & p){
      pos_Fraise.setPosX(p.getPosX());
      pos_Fraise.setPosY(p.getPosY());
 }
-
-void  Fraise::gauche(const Labyrinthe & l,const Gardien &g){
-    int x=pos_Fraise.getPosX();//positionx actuelle de la fraise 
-    int y=pos_Fraise.getPosY();//positiony actuelle de la fraise 
-    int a=g.getPositionGardien().getPosX();//positionx actuelle du gardien
-    int b=g.getPositionGardien().getPosY();//positiony actuelle du gardien
-    Position p ;
-    p.setPosX(x-1); //position de la case ou l'on veut se deplacer 
+void Fraise::gauche(const Labyrinthe& l, const Gardien& g) {
+    int x = pos_Fraise.getPosX();  // position actuelle de la fraise 
+    int y = pos_Fraise.getPosY();
+    int a = g.getPositionGardien().getPosX();  // position actuelle du gardien
+    int b = g.getPositionGardien().getPosY();
+    Position p;
+    p.setPosX(x - 1);  // position de la case où l'on veut se déplacer
     p.setPosY(y);
-    if ((l.estPositionValide(p))&&(((a==(x+1))&&(b==y))||((a==(x-1))&& (b==y))||((a==x)&&(b==(y-1)))||((a==x+1)&&(b==(y+1)))))pos_Fraise.setPosX(x--);
+    if (l.estPositionValide(p) && a == x && b == y - 1) {
+        pos_Fraise.setPosX(x - 1);
+    }
+    else {
+        cerr << "Erreur: Impossible de se déplacer à gauche fraise ." << endl;
+    }
 }
-
 void  Fraise::droite(const Labyrinthe & l,const Gardien & g ){
     int x=pos_Fraise.getPosX();
     int y=pos_Fraise.getPosY();
@@ -39,34 +42,48 @@ void  Fraise::droite(const Labyrinthe & l,const Gardien & g ){
     Position p ;
     p.setPosX(x+1);
     p.setPosY(y);
-    if ((l.estPositionValide(p)) && (((a==x+1)&&(b==y))||((a==x-1)&& (b==y))||((a==x)&&(b==y-1))||((a==x+1)&&(b==y+1)))) pos_Fraise.setPosX(x++);
+    if (l.estPositionValide(p) && a == x && b == y + 1) {
+    pos_Fraise.setPosX(x + 1);
 }
-
-void  Fraise::haut(const Labyrinthe & l ,const Gardien & g){
-    int x=pos_Fraise.getPosX();
-    int y=pos_Fraise.getPosY();
-    int a=g.getPositionGardien().getPosX();
-    int b=g.getPositionGardien().getPosY();
-    Position p ;
-    p.setPosX(x);
-    p.setPosY(y-1);
-    if ((l.estPositionValide(p)) && (((a==x+1)&&(b==y))||((a==x-1)&& (b==y))||((a==x)&&(b==y-1))||((a==x+1)&&(b==y+1)))) pos_Fraise.setPosY(y--);
+    else {
+    cerr << "Erreur: Impossible de se déplacer à droite fraise." << endl;
 }
-
-void  Fraise::bas(const Labyrinthe &l,const Gardien & g){
-    int x=pos_Fraise.getPosX();
-    int y=pos_Fraise.getPosY();
-    int a=g.getPositionGardien().getPosX();
-    int b=g.getPositionGardien().getPosY();
-    Position p ;
+}
+void Fraise::haut(const Labyrinthe &l, const Gardien &g) {
+    int x = pos_Fraise.getPosX();
+    int y = pos_Fraise.getPosY();
+    int a = g.getPositionGardien().getPosX();
+    int b = g.getPositionGardien().getPosY();
+    Position p;
     p.setPosX(x);
-    p.setPosY(y+1);
-    if ((l.estPositionValide(p))&& (((a==x+1)&&(b==y))||((a==x-1)&& (b==y))||((a==x)&&(b==y-1))||((a==x+1)&&(b==y+1)))) pos_Fraise.setPosY(y++);
+    p.setPosY(y - 1);
+   if (l.estPositionValide(p) && a == x && b == y - 1) {
+    pos_Fraise.setPosY(y - 1);
+}
+    else {
+        cerr << "Erreur: Impossible de se déplacer en haut fraise." << endl;
+    }
+    }
+
+void Fraise::bas(const Labyrinthe &l, const Gardien &g) {
+    int x = pos_Fraise.getPosX();
+    int y = pos_Fraise.getPosY();
+    int a = g.getPositionGardien().getPosX();
+    int b = g.getPositionGardien().getPosY();
+    Position p;
+    p.setPosX(x);
+    p.setPosY(y + 1);
+    if (l.estPositionValide(p) && a == x && b == y + 1) {
+    pos_Fraise.setPosY(y + 1);
+}
+    else {
+        cerr << "Erreur: Impossible de se déplacer en bas fraise." << endl;
+    }
 }
 
 
 void Fraise::testRegression(){
-    Gardien g ;
+    Gardien g;
     Labyrinthe l;
     Fraise f;
     Position p;
@@ -74,22 +91,21 @@ void Fraise::testRegression(){
     p.setPosY(3);
     f.setPositionFraise(p);
 
-    f.gauche(l,g);
-    assert((f.getPositionFraise().getPosX())==2);
-    assert(f.getPositionFraise().getPosX()==3);
+    f.gauche(l, g);
+    assert(f.getPositionFraise().getPosX() == 2);
+    assert(f.getPositionFraise().getPosY() == 3);
 
     g.droite(l);
-    assert((f.getPositionFraise().getPosX())==3);
-    assert(f.getPositionFraise().getPosX()==3);
-    g.haut(l);
-    assert((f.getPositionFraise().getPosX())==3);
-    assert((f.getPositionFraise().getPosX())==2); 
-    g.bas(l);
-    assert((f.getPositionFraise().getPosX())==3);
-    assert((f.getPositionFraise().getPosX())==3); 
-    
-    cout<<endl<<"fin de test de regression pour Fraise " <<endl;
+    assert(f.getPositionFraise().getPosX() == 3);
+    assert(f.getPositionFraise().getPosY() == 3);
 
-    
-    
+    g.haut(l);
+    assert(f.getPositionFraise().getPosX() == 3);
+    assert(f.getPositionFraise().getPosY() == 2);
+
+    g.bas(l);
+    assert(f.getPositionFraise().getPosX() == 3);
+    assert(f.getPositionFraise().getPosY() == 4);
+
+    cout << endl << "fin de test de regression pour Fraise" << endl;
 }

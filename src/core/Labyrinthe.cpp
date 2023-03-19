@@ -97,12 +97,21 @@ void Labyrinthe::setTypeLab(Position & p , TypeLab lab ){
 	int i=y*dimx+x;
 	tabLab[i]=lab;
 }
-bool Labyrinthe::estPositionValide(const Position & p)const{
+/*bool Labyrinthe::estPositionValide(const Position & p)const{
 	int x = p.getPosX();
 	int y = p.getPosY();
     return ((x>=0) && (x<dimL.getLargeur()) && (y>=0) && (y<dimL.getHauteur()) && (tabLab[y*dimL.getLargeur()+x]!='#'));
 
 
+}*/
+bool Labyrinthe::estPositionValide(const Position & pos) const {
+    int x = pos.getPosX();
+    int y = pos.getPosY();
+    if (x < 0 || x >= dimL.getLargeur() || y < 0 || y >= dimL.getHauteur()) {
+        return false;
+    }
+    int i = y * dimL.getLargeur() + x;
+    return (tabLab[i] != MUR);
 }
 
 

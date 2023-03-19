@@ -9,7 +9,7 @@
 using namespace std;
 
 
-int main (int argc, char** argv ){
+int main (){
     Fraise f;
     Gardien g;
     Labyrinthe l;
@@ -17,9 +17,5 @@ int main (int argc, char** argv ){
     l.testRegression();
     f.testRegression();
     g.testRegression();
-
-
-
-
 
 }

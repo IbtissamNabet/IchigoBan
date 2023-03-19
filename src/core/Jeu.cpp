@@ -1,5 +1,8 @@
 #include"Jeu.h"
 
+#include<iostream>
+#include<math.h>
+using namespace  std;
 
 Jeu::Jeu():niv(), gard(){
     Position p,p1,p2,p3,p4;
@@ -54,65 +57,61 @@ Fraise * Jeu::getFraise ()const{
 
 Gardien Jeu::getGardien() const{
     return gard;
+   
 }
 
 void Jeu::toucheClavier (const char touche) {
     Labyrinthe lab;
     Position  pf,pg;
     int pfx,pfy,pgx,pgy;
-    for (int i=0; i<niv.getNbFraises(); i++)
-        {
+    for (int i = 0; i < niv.getNbFraises(); i++) {
+        pf = fraises[i].getPositionFraise();
+        pfx = pf.getPosX(); 
+        pfy = pf.getPosY();
+        pg = gard.getPositionGardien();
+        pgx = pg.getPosX(); 
+        pgy = pg.getPosY();
 
-        pf =fraises[i].getPositionFraise();
-        pfx=pf.getPosX(); pfy=pf.getPosY();
-        pg=gard.getPositionGardien();
-        pgx=pg.getPosX(); pgy=pg.getPosY();
-
-        switch (touche)
-            {
+        switch (touche) {
             case 'd':
-                     if((pfx-1==pgx) && (pfy==pgy)) 
-                        {
-
-                        gard.droite(lab);
-                        fraises[i].droite(lab,gard);
-                        break;
-                    }
-                    else gard.droite(lab);
+                if ((pfx-1 == pgx) && (pfy == pgy)) {
+                    gard.droite(lab);
+                    fraises[i].droite(lab, gard);
+                } else {
+                    gard.droite(lab);
+                }
+                break;
 
             case 'g':
-                    if((pfx+1==pgx) && (pfy==pgy))
-                         {
-                        gard.gauche(lab);
-                        fraises[i].gauche(lab,gard);
-                        break;
-
+                if ((pfx+1 == pgx) && (pfy == pgy)) {
+                    gard.gauche(lab);
+                    for (int j = 0; j < niv.getNbFraises(); j++) {
+                        if ((fraises[j].getPositionFraise().getPosX() == pgx-1) && (fraises[j].getPositionFraise().getPosY() == pgy)) {
+                            fraises[j].gauche(lab, gard);
+                        }
                     }
-                    else gard.gauche(lab);
+                } else {
+                    gard.gauche(lab);
+                }
+                break;
 
             case 'h':
-                    if((pfx==pgx) && (pfy+1==pgy)) 
-                        {
-                        gard.haut(lab);
-                        fraises[i].haut(lab,gard);
-                        break;
-
-                    }
-                    else gard.haut(lab);
+                if ((pfx == pgx) && (pfy+1 == pgy)) {
+                    gard.haut(lab);
+                    fraises[i].haut(lab, gard);
+                } else {
+                    gard.haut(lab);
+                }
+                break;
 
             case 'b':
-                        if((pfx==pgx) && (pfy-1==pgy)) 
-                            {
-                            gard.bas(lab);
-                            fraises[i].bas(lab,gard);
-                            break;
-
-                        }
-                        else gard.bas(lab);
-
-            }
-
+                if ((pfx == pgx) && (pfy-1 == pgy)) {
+                    gard.bas(lab);
+                    fraises[i].bas(lab, gard);
+                } else {
+                    gard.bas(lab);
+                }
+                break;
         }
     }
-
-
+}

@@ -42,7 +42,7 @@ public:
     @brief
     La fonction getPositionFraise récupere la position de la fraise 
 */
-    Position  getPositionFraise();
+    Position  getPositionFraise()const;
 //___________________________________________________________________________________________________________________________________________________________________
 /**
     @brief

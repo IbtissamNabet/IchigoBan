@@ -1,5 +1,4 @@
-#ifndef DIM_H
-#define DIM_H
+
 #include "Position.h"
 
     Position::Position(){
@@ -21,4 +20,3 @@
     void Position::setPosY( int b){
         y=b;
     }
-#endif
