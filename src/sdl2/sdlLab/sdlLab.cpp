@@ -10,14 +10,13 @@ const int TAILLE_SPRITE = 32;
 
 Image::Image () : m_surface(nullptr), m_texture(nullptr), m_hasChanged(false) {
 }
-
 Image::~Image()
 {
-    SDL_FreeSurface(m_surface);
-    SDL_DestroyTexture(m_texture);
-
+    if (m_texture != nullptr) {
+        SDL_DestroyTexture(m_texture);
+        m_texture = nullptr;
+    }
     m_surface = nullptr;
-    m_texture = nullptr;
     m_hasChanged = false;
 }
 
@@ -163,10 +162,14 @@ void SdlLab::sdlLabAfficher () {
     //Afficher les fraises
     for(int i=0; i<jeu.getNiveau().getNbFraises(); i++){
         
+        x=jeu.getFraise()[i].getPositionFraise().getPosX();
+        y=jeu.getFraise()[i].getPositionFraise().getPosY();
+		im_fraise.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
+
+        
     }
 
-    }
-
+}
 
    /* // Ecrire un titre par dessus
     SDL_Rect positionTitre;
