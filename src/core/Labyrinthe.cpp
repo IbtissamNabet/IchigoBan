@@ -54,10 +54,7 @@ Labyrinthe::Labyrinthe () {
 	if(tabLab!=NULL) {
 		delete[]tabLab ;
 		tabLab=nullptr;
-	
-
-	}
-	
+	}	
  }
 
 

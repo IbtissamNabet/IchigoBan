@@ -33,7 +33,7 @@ Jeu::~Jeu(){
     if(fraises!=NULL) {
 		delete[]fraises ;
 		fraises=nullptr;
-}
+    }
 }
 
 Jeu::Jeu(Niveau N, Gardien G){

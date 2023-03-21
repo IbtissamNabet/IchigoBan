@@ -182,10 +182,52 @@ void SdlLab::sdlLabBoucle(){
     SDL_Event events;
 	bool quit = false;
 	while (!quit) {
-		while (SDL_PollEvent(&events)) {        
-			if (events.type == SDL_QUIT) quit = true;      
-        }  
 
+		while (SDL_PollEvent(&events)) {        
+			
+            switch ((events.type)){
+                    
+                case(SDL_QUIT):
+                         quit = true;  
+                         break;   
+                case(SDL_KEYDOWN):
+
+                        if(events.key.keysym.sym==SDLK_ESCAPE){
+                            quit=true;
+                            break;
+                        }
+
+                        if(events.key.keysym.sym==SDLK_f){
+                            // Regarde si on appuyer sur la touche f
+                            jeu.toucheClavier('d');
+                             
+                        }
+
+                        if(events.key.keysym.sym==SDLK_s){
+                            // Regarde si on appuyer sur la touche d 
+                            jeu.toucheClavier('g');
+                             
+                        }
+                        
+                        if(events.key.keysym.sym==SDLK_e){
+                            // Regarde si on appuyer sur la touche e 
+                            jeu.toucheClavier('h');
+                             
+                        }
+                            
+                        if(events.key.keysym.sym==SDLK_d){
+                             // Regarde si on appuyer sur la touche d
+                            jeu.toucheClavier('b');
+                             
+                        } 
+                default:
+                    quit=false;
+                    
+
+            } 
+                                
+        }
+                    
 		// on affiche le jeu sur le buffer cach�
 		sdlLabAfficher();
 
@@ -193,3 +235,4 @@ void SdlLab::sdlLabBoucle(){
         SDL_RenderPresent(renderer); 
     }
 }
+
