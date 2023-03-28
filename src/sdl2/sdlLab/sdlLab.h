@@ -55,7 +55,7 @@ private :
     
 public :
 
-    SdlLab(const Jeu & partie);
+    SdlLab();
     ~SdlLab ();
     void sdlLabAfficher();
     void sdlLabBoucle();

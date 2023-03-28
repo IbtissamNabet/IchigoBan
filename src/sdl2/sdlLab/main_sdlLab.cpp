@@ -3,8 +3,8 @@
 int main (int argc, char** argv) {
 
 	
-    Jeu game;
-	SdlLab sdl_Jeu(game);
+
+	SdlLab sdl_Jeu;
 	sdl_Jeu.sdlLabBoucle();
 	return 0;
 }

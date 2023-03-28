@@ -81,8 +81,7 @@ SDL_Texture * Image::getTexture() const {return m_texture;}
 void Image::setSurface(SDL_Surface * surf) {m_surface = surf;}
 
 
-SdlLab::SdlLab (const Jeu & partie){
-    jeu=partie;
+SdlLab::SdlLab(){
     // Initialisation de la SDL
 
     ///ouvrir le module des fonctions videos 
