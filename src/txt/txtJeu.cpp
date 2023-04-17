@@ -85,6 +85,11 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
                 ok = false;
                 break;
         }
+        if (jeu.partie_terminee()){
+            termClear();
+            jeu.setNiveau(jeu.niv.getNum()+1);
+            win=WinTXT(jeu.niv.getLab().getDim().getLargeur(),jeu.getNiveau().getLab().getDim().getHauteur());
+        }
 
     } while (ok);
 }

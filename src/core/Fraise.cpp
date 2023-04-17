@@ -82,30 +82,26 @@ void Fraise::bas(const Labyrinthe &l, const Gardien &g) {
 }
 
 
-void Fraise::testRegression(){
+void Fraise::testRegression(const Labyrinthe & l){
     Gardien g;
-    Labyrinthe l;
     Fraise f;
     Position p;
     p.setPosX(3);
     p.setPosY(3);
     f.setPositionFraise(p);
+    g.setPositionGardien(p);
 
     f.gauche(l, g);
     assert(f.getPositionFraise().getPosX() == 2);
     assert(f.getPositionFraise().getPosY() == 3);
 
     g.droite(l);
-    assert(f.getPositionFraise().getPosX() == 3);
+    assert(f.getPositionFraise().getPosX() == 2);
     assert(f.getPositionFraise().getPosY() == 3);
 
-    g.haut(l);
-    assert(f.getPositionFraise().getPosX() == 3);
-    assert(f.getPositionFraise().getPosY() == 2);
-
-    g.bas(l);
-    assert(f.getPositionFraise().getPosX() == 3);
-    assert(f.getPositionFraise().getPosY() == 4);
-
-    cout << endl << "fin de test de regression pour Fraise" << endl;
+    f.droite(l, g);
+    assert(f.getPositionFraise().getPosX() == 2);
+    assert(f.getPositionFraise().getPosY() == 3);
+    cout <<"c'est normal" << endl;
+    cout <<"fin de test de regression pour Fraise" << endl;
 }

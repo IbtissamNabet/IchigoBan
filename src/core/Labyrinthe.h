@@ -26,10 +26,11 @@ class Labyrinthe {
 
     Dimension dimL;
 
-    TypeLab * tabLab;
+
 //________________________________________________________________________________________________________________________________________________________________________
     public:
-
+    TypeLab * tabLab;
+    
     /**
     @brief <B>Construit</B> un objet Labyrinthe .
     Le le constructeur crée un objet labyrinthe par defaut 
@@ -76,7 +77,28 @@ class Labyrinthe {
     */
 
     Dimension  getDim() const ;
+   //________________________________________________________________________________________________________________________________________________________________________
+   /**
+    @brief  la fonction setDim  remplit les dimensions selon la hauteur et la largeur passée en paramètre
+    @param hauteur: entier
+    @param largeur: entier
+    */
+    void setDim(int hauteur, int largeur);
+   //________________________________________________________________________________________________________________________________________________________________________
 
+   /**
+    @brief  la fonction getTabLab renvoie un pointeur sur un tableau de TypeLab
+    */
+
+    TypeLab * getTabLab() const ;
+   //________________________________________________________________________________________________________________________________________________________________________
+   
+   /**
+    @brief  la fonction setTabLab affecte la valeur du pointeur sur TypeLab passé en paramètre à tabLab
+   */
+
+   void setTabLab(TypeLab* p);
+   //________________________________________________________________________________________________________________________________________________________________________   
 
     bool estPositionValide(const Position & p)const;
    //________________________________________________________________________________________________________________________________________________________________________

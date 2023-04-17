@@ -86,7 +86,7 @@ public:
 
 
 
-void testRegression();
+void testRegression(const Labyrinthe & l);
 
 };
 

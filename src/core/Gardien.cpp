@@ -66,25 +66,25 @@ void Gardien::bas(const Labyrinthe & l) {
     }
 }
 
-void Gardien::testRegression() {
+void Gardien::testRegression(const Labyrinthe & l) {
     Gardien g;
-    Labyrinthe l;
-
+    Position p(5,3);
+    g.setPositionGardien(p);
     g.gauche(l);
-    assert((g.getPositionGardien().getPosX()) == 1);
-    assert((g.getPositionGardien().getPosY()) == 1);
+    assert((g.getPositionGardien().getPosX()) == 4);
+    assert((g.getPositionGardien().getPosY()) == 3);
 
     g.droite(l);
-    assert((g.getPositionGardien().getPosX()) == 2);
-    assert((g.getPositionGardien().getPosY()) == 1);
+    assert((g.getPositionGardien().getPosX()) == 5);
+    assert((g.getPositionGardien().getPosY()) == 3);
 
     g.haut(l);
-    assert((g.getPositionGardien().getPosX()) == 2);
-    assert((g.getPositionGardien().getPosY()) == 0);
+    assert((g.getPositionGardien().getPosX()) == 5);
+    assert((g.getPositionGardien().getPosY()) == 2);
 
     g.bas(l);
-    assert((g.getPositionGardien().getPosX()) == 2);
-    assert((g.getPositionGardien().getPosY()) == 1);
+    assert((g.getPositionGardien().getPosX()) == 5);
+    assert((g.getPositionGardien().getPosY()) == 3);
 
     cout << endl << "Fin de test de regression pour Gardien " << endl;
 }

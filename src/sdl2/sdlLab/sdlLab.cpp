@@ -98,10 +98,11 @@ SdlLab::SdlLab(){
         SDL_Quit();
         exit(1);
     }
-
+    jeu.setNiveau(0);
 	int dimx, dimy;
 	dimx = jeu.getNiveau().getLab().getDim().getLargeur();
 	dimy = jeu.getNiveau().getLab().getDim().getHauteur();
+    cout<<dimx<<" "<<dimy<<endl;
 	dimx = dimx * TAILLE_SPRITE;
 	dimy = dimy * TAILLE_SPRITE;
 
@@ -131,6 +132,33 @@ SdlLab::~SdlLab () {
     SDL_Quit();
 }
 
+void SdlLab::nouvellePartie(){
+    jeu.setNiveau(jeu.niv.getNum()+1);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+	int dimx, dimy;
+	dimx = jeu.getNiveau().getLab().getDim().getLargeur();
+	dimy = jeu.getNiveau().getLab().getDim().getHauteur();
+    cout<<dimx<<" "<<dimy<<endl;
+	dimx = dimx * TAILLE_SPRITE;
+	dimy = dimy * TAILLE_SPRITE;
+    // Creation de la fenetre
+    window = SDL_CreateWindow("Ichigo'Ban", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, dimx, dimy, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+    if (window == nullptr) {
+        cout << "Erreur lors de la creation de la fenetre : " << SDL_GetError() << endl; 
+        SDL_Quit(); 
+        exit(1);
+    }
+
+    //
+    renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
+    im_mur.loadFromFile("data/mur.png",renderer);
+    im_vide.loadFromFile("data/vide.png",renderer);
+    im_empcible.loadFromFile("data/empcible.png",renderer);
+    im_fraise.loadFromFile("data/fraise.png",renderer);
+    im_gardien.loadFromFile("data/gardien.png",renderer);
+}
+
 void SdlLab::sdlLabAfficher () {
 	//Remplir l'écran de blanc
     SDL_SetRenderDrawColor(renderer, 230, 240, 255, 255);
@@ -144,11 +172,11 @@ void SdlLab::sdlLabAfficher () {
 	for (x=0;x<jeu.getNiveau().getLab().getDim().getLargeur();++x){
 		for (y=0;y<jeu.getNiveau().getLab().getDim().getHauteur();++y){
             p=Position(x,y);
-			if (jeu.getNiveau().getLab().getTypeLab(p)=='#')
+			if (jeu.getNiveau().getLab().getTypeLab(p)==MUR)
 				im_mur.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
-			else if (jeu.getNiveau().getLab().getTypeLab(p)=='.')
+			else if (jeu.getNiveau().getLab().getTypeLab(p)==VIDE)
 				im_vide.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
-            else if (jeu.getNiveau().getLab().getTypeLab(p)=='*')
+            else if (jeu.getNiveau().getLab().getTypeLab(p)==EMPCIBLE)
             	im_empcible.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
         }
     }
@@ -180,6 +208,7 @@ void SdlLab::sdlLabAfficher () {
 void SdlLab::sdlLabBoucle(){
     SDL_Event events;
 	bool quit = false;
+    //bool next = false;
 	while (!quit) {
 
 		while (SDL_PollEvent(&events)) {        
@@ -224,7 +253,9 @@ void SdlLab::sdlLabBoucle(){
                     
 
             } 
-                                
+            if (jeu.partie_terminee()){
+                nouvellePartie();
+            }                               
         }
                     
 		// on affiche le jeu sur le buffer cach�

@@ -34,8 +34,6 @@ class SdlLab {
 
 private :
 
-	Jeu jeu;
-
     SDL_Window * window;
     SDL_Renderer * renderer;
 
@@ -54,11 +52,12 @@ private :
 
     
 public :
-
+	Jeu jeu;
     SdlLab();
     ~SdlLab ();
     void sdlLabAfficher();
     void sdlLabBoucle();
+    void nouvellePartie();
 
 };
 

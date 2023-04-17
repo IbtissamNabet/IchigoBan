@@ -24,6 +24,7 @@ private :
 	Labyrinthe lab;
 	std::vector <Position> pos_EmpCibles;
     std::vector <Position> posInit_Fraises;
+    Position posInit_Gardien;
 
 public:
 /**
@@ -65,6 +66,15 @@ public:
     const Labyrinthe& getLab() const;
 
 //________________________________________________________________________________________________________________________________________________________________________
+
+/**   
+    @brief la fonction setLab modifie le labyrinthe selon l'entier entré en paramètre
+    @param n: entier correspondant au numéro du niveau
+*/
+    void setLab(int n);
+
+//________________________________________________________________________________________________________________________________________________________________________
+
 /**   
     @brief la fonction getPos_EmpCibles renvoie le tableau contenant la position des emplacements cible
 */
@@ -76,6 +86,13 @@ public:
 */
     vector <Position>getPosInit_Fraises();
 //________________________________________________________________________________________________________________________________________________________________________
+
+/**   
+    @brief la fonction getPosInit_Gardien renvoie la position initiale du Gardien
+*/
+    Position getPosInit_Gardien()const;
+//________________________________________________________________________________________________________________________________________________________________________
+
 
 /**
     La procedure ajouterFraise ajoute une fraise dans le niveau

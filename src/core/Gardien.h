@@ -72,7 +72,7 @@ void haut(const Labyrinthe & l );
 void bas(const Labyrinthe &l);
 
 
-void testRegression();
+void testRegression(const Labyrinthe & l);
 
 
 
