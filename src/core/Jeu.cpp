@@ -211,3 +211,11 @@ bool Jeu::placee(Fraise f){
     }
     return(i==0);
 }
+void Jeu::rejouer_partie(){
+    gard.setPositionGardien(niv.getPosInit_Gardien());
+    Fraise f ;
+    for(int i=0 ;i< niv.getNbFraises();i++){
+        f.setPositionFraise(niv.getPosInit_Fraises()[i]);
+        fraises[i]=f;
+    }
+}

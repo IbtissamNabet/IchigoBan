@@ -25,5 +25,6 @@ public :
     void toucheClavier(const char touche);
     bool partie_terminee();//renvoie true si toutes les fraises sont placées
     bool placee(Fraise f);//renvoie true si la position de la fraise entrée en parametre correspond à un emplacement cible
+    void rejouer_partie();
 };
 #endif

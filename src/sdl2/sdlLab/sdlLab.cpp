@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "sdlLab.h"
 #include <iostream>
+
 using namespace std;
 
 const int TAILLE_SPRITE = 32;
@@ -103,7 +104,7 @@ SdlLab::SdlLab(){
 	dimx = jeu.getNiveau().getLab().getDim().getLargeur();
 	dimy = jeu.getNiveau().getLab().getDim().getHauteur();
     cout<<dimx<<" "<<dimy<<endl;
-	dimx = dimx * TAILLE_SPRITE;
+	dimx = dimx * TAILLE_SPRITE+5*TAILLE_SPRITE;
 	dimy = dimy * TAILLE_SPRITE;
 
     // Creation de la fenetre
@@ -123,6 +124,7 @@ SdlLab::SdlLab(){
     im_empcible.loadFromFile("data/empcible.png",renderer);
     im_fraise.loadFromFile("data/fraise.png",renderer);
     im_gardien.loadFromFile("data/gardien.png",renderer);
+    im_touches.loadFromFile("data/touches.png",renderer);
 
 }
 
@@ -140,7 +142,7 @@ void SdlLab::nouvellePartie(){
 	dimx = jeu.getNiveau().getLab().getDim().getLargeur();
 	dimy = jeu.getNiveau().getLab().getDim().getHauteur();
     cout<<dimx<<" "<<dimy<<endl;
-	dimx = dimx * TAILLE_SPRITE;
+	dimx = dimx * TAILLE_SPRITE+5*TAILLE_SPRITE;
 	dimy = dimy * TAILLE_SPRITE;
     // Creation de la fenetre
     window = SDL_CreateWindow("Ichigo'Ban", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, dimx, dimy, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
@@ -157,7 +159,74 @@ void SdlLab::nouvellePartie(){
     im_empcible.loadFromFile("data/empcible.png",renderer);
     im_fraise.loadFromFile("data/fraise.png",renderer);
     im_gardien.loadFromFile("data/gardien.png",renderer);
+    im_touches.loadFromFile("data/touches.png",renderer);
 }
+//son
+/*void SdlLab::son(){
+    if (SDL_Init(SDL_INIT_VIDEO) < 0){
+       cout<<"erreur lors de l'initialisation de la SDL "<<endl;
+        EXIT_FAILURE;
+    }
+    // Initialisation de SDL_Mixer
+    if (Mix_OpenAudio(96000, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) < 0)
+    {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur initialisation SDL_mixer : %s", Mix_GetError());
+        SDL_Quit();
+         EXIT_FAILURE; 
+    }
+
+    Mix_Music* music = Mix_LoadMUS("data/son.mp3"); // Charge notre musique
+
+    if (music == nullptr)
+    {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur chargement de la musique : %s", Mix_GetError());
+        Mix_CloseAudio();
+        SDL_Quit();
+        EXIT_FAILURE;
+    }
+
+    Mix_PlayMusic(music, -1); // Joue notre musique 
+
+    SDL_Window* pWindow = nullptr;
+    SDL_Renderer* pRenderer = nullptr;
+    SDL_Event events;
+    bool close = false;
+
+    SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_SHOWN, &pWindow, &pRenderer);
+
+    while (!close)
+    {
+        while (SDL_PollEvent(&events))
+        {
+            if (events.type == SDL_WINDOWEVENT && events.window.event == SDL_WINDOWEVENT_CLOSE)
+                close = true;
+        }
+
+        SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
+        SDL_RenderClear(pRenderer);
+        SDL_RenderPresent(pRenderer);
+    }
+
+    SDL_DestroyRenderer(pRenderer);
+    SDL_DestroyWindow(pWindow);
+    Mix_FreeMusic(music); // Libére en mémoire notre musique
+    Mix_CloseAudio(); // Quitter correctement SDL_Mixer
+    SDL_Quit();
+
+    
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
 
 void SdlLab::sdlLabAfficher () {
 	//Remplir l'écran de blanc
@@ -196,6 +265,14 @@ void SdlLab::sdlLabAfficher () {
         
     }
 
+    //afichage des touches 
+    x =(jeu.getNiveau().getLab().getDim().getLargeur());
+    y = (jeu.getNiveau().getLab().getDim().getHauteur());
+
+    im_touches.draw(renderer,x*TAILLE_SPRITE,0*TAILLE_SPRITE,TAILLE_SPRITE*5,TAILLE_SPRITE*5);
+
+
+
 }
 
    /* // Ecrire un titre par dessus
@@ -225,29 +302,32 @@ void SdlLab::sdlLabBoucle(){
                             break;
                         }
 
-                        if(events.key.keysym.sym==SDLK_f){
+                        if(events.key.keysym.sym==SDLK_RIGHT){
                             // Regarde si on appuyer sur la touche f
                             jeu.toucheClavier('d');
                              
                         }
 
-                        if(events.key.keysym.sym==SDLK_s){
+                        if(events.key.keysym.sym==SDLK_LEFT){
                             // Regarde si on appuyer sur la touche d 
                             jeu.toucheClavier('g');
                              
                         }
                         
-                        if(events.key.keysym.sym==SDLK_e){
+                        if(events.key.keysym.sym==SDLK_UP){
                             // Regarde si on appuyer sur la touche e 
                             jeu.toucheClavier('h');
                              
                         }
                             
-                        if(events.key.keysym.sym==SDLK_d){
+                        if(events.key.keysym.sym==SDLK_DOWN){
                              // Regarde si on appuyer sur la touche d
                             jeu.toucheClavier('b');
                              
                         } 
+                         if(events.key.keysym.sym==SDLK_r){
+                             // Regarde si on appuyer sur la touche d
+                            jeu.rejouer_partie();
                 default:
                     quit=false;
                     
@@ -266,3 +346,4 @@ void SdlLab::sdlLabBoucle(){
     }
 }
 
+}

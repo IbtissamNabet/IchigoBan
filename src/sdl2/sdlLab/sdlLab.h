@@ -49,6 +49,7 @@ private :
     Image im_empcible;
     Image im_gardien;
     Image im_fraise;
+    Image im_touches;
 
     
 public :
@@ -58,6 +59,7 @@ public :
     void sdlLabAfficher();
     void sdlLabBoucle();
     void nouvellePartie();
+    //void son();
 
 };
 
