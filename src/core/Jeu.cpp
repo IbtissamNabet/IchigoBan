@@ -65,6 +65,7 @@ Gardien Jeu::getGardien() const{
 }
 
 void Jeu::setNiveau(int n){
+   
     niv.setNum(n);
     niv.setLab(n);
     if (fraises!=NULL){

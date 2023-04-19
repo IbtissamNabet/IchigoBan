@@ -25,7 +25,7 @@ OBJ_SDL=obj/sdl2/sdlLab.o \
 		obj/sdl2/main_sdlLab.o 
 
 bin/sdlJeu:$(OBJ_COR) $(OBJ_SDL)
-	$(CC) -o $@ $(OBJ_COR) $(OBJ_SDL) -lSDL2 -lSDL2_ttf -lSDL2_image
+	$(CC) -o $@ $(OBJ_COR) $(OBJ_SDL) -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer
 
 bin/txtJeu: $(OBJ_COR) $(OBJ_TXT)
 	$(CC) -o $@ $(OBJ_COR) $(OBJ_TXT)

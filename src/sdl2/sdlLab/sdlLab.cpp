@@ -9,8 +9,7 @@ using namespace std;
 
 const int TAILLE_SPRITE = 32;
 
-Image::Image () : m_surface(nullptr), m_texture(nullptr), m_hasChanged(false) {
-}
+Image::Image () : m_surface(nullptr), m_texture(nullptr), m_hasChanged(false) { }
 Image::~Image()
 {
     if (m_texture != nullptr) {
@@ -23,16 +22,22 @@ Image::~Image()
 
 void Image::loadFromFile (const char* filename, SDL_Renderer * renderer) {
     m_surface = IMG_Load(filename);
-    if (m_surface == nullptr) {
+    if (m_surface == nullptr) 
+    {
         string nfn = string("../") + filename;
         cout << "Error: cannot load "<< filename <<". Trying "<<nfn<<endl;
         m_surface = IMG_Load(nfn.c_str());
-        if (m_surface == nullptr) {
+        if (m_surface == nullptr)
+
+        {
             nfn = string("../") + nfn;
             m_surface = IMG_Load(nfn.c_str());
         }
+
     }
-    if (m_surface == nullptr) {
+
+    if (m_surface == nullptr) 
+    {
         cout<<"Error: cannot load "<< filename <<endl;
         SDL_Quit();
         exit(1);
@@ -43,23 +48,28 @@ void Image::loadFromFile (const char* filename, SDL_Renderer * renderer) {
     m_surface = surfaceCorrectPixelFormat;
 
     m_texture = SDL_CreateTextureFromSurface(renderer,surfaceCorrectPixelFormat);
-    if (m_texture == NULL) {
+    if (m_texture == NULL) 
+    {
         cout << "Error: problem to create the texture of "<< filename<< endl;
         SDL_Quit();
         exit(1);
     }
+
 }
 
-void Image::loadFromCurrentSurface (SDL_Renderer * renderer) {
+void Image::loadFromCurrentSurface (SDL_Renderer * renderer) 
+{
     m_texture = SDL_CreateTextureFromSurface(renderer,m_surface);
     if (m_texture == nullptr) {
         cout << "Error: problem to create the texture from surface " << endl;
         SDL_Quit();
         exit(1);
     }
+
 }
 
-void Image::draw (SDL_Renderer * renderer, int x, int y, int w, int h) {
+void Image::draw (SDL_Renderer * renderer, int x, int y, int w, int h) 
+{
     int ok;
     SDL_Rect r;
     r.x = x;
@@ -67,7 +77,8 @@ void Image::draw (SDL_Renderer * renderer, int x, int y, int w, int h) {
     r.w = (w<0)?m_surface->w:w;
     r.h = (h<0)?m_surface->h:h;
 
-    if (m_hasChanged) {
+    if (m_hasChanged) 
+    {
         ok = SDL_UpdateTexture(m_texture,nullptr,m_surface->pixels,m_surface->pitch);
         assert(ok == 0);
         m_hasChanged = false;
@@ -75,26 +86,36 @@ void Image::draw (SDL_Renderer * renderer, int x, int y, int w, int h) {
 
     ok = SDL_RenderCopy(renderer,m_texture,nullptr,&r);
     assert(ok == 0);
+
 }
 
-SDL_Texture * Image::getTexture() const {return m_texture;}
+SDL_Texture * Image::getTexture() const 
+{
+    return m_texture;
+}
 
-void Image::setSurface(SDL_Surface * surf) {m_surface = surf;}
+void Image::setSurface(SDL_Surface * surf) 
+{
+    m_surface = surf;
+}
 
 
-SdlLab::SdlLab(){
+SdlLab::SdlLab()
+{
     // Initialisation de la SDL
-
     ///ouvrir le module des fonctions videos 
     SDL_Init(SDL_INIT_VIDEO);
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) 
+    {
         cout << "Erreur lors de l'initialisation de la SDL : " << SDL_GetError() << endl;
         SDL_Quit();
         exit(1);
     }
 
     int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
-    if( !(IMG_Init(imgFlags) & imgFlags)) {
+
+    if( !(IMG_Init(imgFlags) & imgFlags)) 
+    {
         cout << "SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << endl;
         SDL_Quit();
         exit(1);
@@ -109,13 +130,14 @@ SdlLab::SdlLab(){
 
     // Creation de la fenetre
     window = SDL_CreateWindow("Ichigo'Ban", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, dimx, dimy, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
-    if (window == nullptr) {
+
+    if (window == nullptr) 
+    {
         cout << "Erreur lors de la creation de la fenetre : " << SDL_GetError() << endl; 
         SDL_Quit(); 
         exit(1);
     }
 
-    //
     renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
 
     // IMAGES
@@ -128,14 +150,40 @@ SdlLab::SdlLab(){
 
 }
 
-SdlLab::~SdlLab () {
+SdlLab::~SdlLab () 
+{
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
 
-void SdlLab::nouvellePartie(){
+
+
+void SdlLab::nouvellePartie()
+{
+
     jeu.setNiveau(jeu.niv.getNum()+1);
+    /*if(jeu.niv.getNum()==2) {
+        im_victoire.loadFromFile("data/victoire.jpeg",renderer);
+        SDL_RenderClear(renderer);
+        //recuperer la dimension de la fenetre 
+        int larg;
+        int haut;
+        SDL_GetWindowSize(window,&larg,&haut);
+
+        im_victoire.draw(renderer,0,0,larg,haut);
+        SDL_RenderPresent(renderer);
+        SDL_Delay(12000);
+        SDL_DestroyRenderer(renderer); //on detruit le rendu actuel 
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        exit(0);
+
+    }
+    else {
+*/
+
+
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 	int dimx, dimy;
@@ -160,72 +208,8 @@ void SdlLab::nouvellePartie(){
     im_fraise.loadFromFile("data/fraise.png",renderer);
     im_gardien.loadFromFile("data/gardien.png",renderer);
     im_touches.loadFromFile("data/touches.png",renderer);
+
 }
-//son
-/*void SdlLab::son(){
-    if (SDL_Init(SDL_INIT_VIDEO) < 0){
-       cout<<"erreur lors de l'initialisation de la SDL "<<endl;
-        EXIT_FAILURE;
-    }
-    // Initialisation de SDL_Mixer
-    if (Mix_OpenAudio(96000, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) < 0)
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur initialisation SDL_mixer : %s", Mix_GetError());
-        SDL_Quit();
-         EXIT_FAILURE; 
-    }
-
-    Mix_Music* music = Mix_LoadMUS("data/son.mp3"); // Charge notre musique
-
-    if (music == nullptr)
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur chargement de la musique : %s", Mix_GetError());
-        Mix_CloseAudio();
-        SDL_Quit();
-        EXIT_FAILURE;
-    }
-
-    Mix_PlayMusic(music, -1); // Joue notre musique 
-
-    SDL_Window* pWindow = nullptr;
-    SDL_Renderer* pRenderer = nullptr;
-    SDL_Event events;
-    bool close = false;
-
-    SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_SHOWN, &pWindow, &pRenderer);
-
-    while (!close)
-    {
-        while (SDL_PollEvent(&events))
-        {
-            if (events.type == SDL_WINDOWEVENT && events.window.event == SDL_WINDOWEVENT_CLOSE)
-                close = true;
-        }
-
-        SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
-        SDL_RenderClear(pRenderer);
-        SDL_RenderPresent(pRenderer);
-    }
-
-    SDL_DestroyRenderer(pRenderer);
-    SDL_DestroyWindow(pWindow);
-    Mix_FreeMusic(music); // Libére en mémoire notre musique
-    Mix_CloseAudio(); // Quitter correctement SDL_Mixer
-    SDL_Quit();
-
-    
-}
-
-*/
-
-
-
-
-
-
-
-
-
 
 
 void SdlLab::sdlLabAfficher () {
@@ -262,7 +246,6 @@ void SdlLab::sdlLabAfficher () {
         y=jeu.getFraise()[i].getPositionFraise().getPosY();
 		im_fraise.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
 
-        
     }
 
     //afichage des touches 
@@ -275,18 +258,36 @@ void SdlLab::sdlLabAfficher () {
 
 }
 
-   /* // Ecrire un titre par dessus
-    SDL_Rect positionTitre;
-    positionTitre.x = 270;positionTitre.y = 49;positionTitre.w = 100;positionTitre.h = 30;
-    SDL_RenderCopy(renderer,font_im.getTexture(),nullptr,&positionTitre);*/
-
-
-
 void SdlLab::sdlLabBoucle(){
+    if (SDL_Init(SDL_INIT_VIDEO) < 0){
+       cout<<"erreur lors de l'initialisation de la SDL "<<endl;
+        EXIT_FAILURE;
+    }
+    // Initialisation de SDL_Mixer
+    if (Mix_OpenAudio(96000, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) < 0)
+    {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur initialisation SDL_mixer : %s", Mix_GetError());
+        SDL_Quit();
+         EXIT_FAILURE; 
+    }
+
+    Mix_Music* music = Mix_LoadMUS("data/son.mp3"); // Charge notre musique
+
+    if (music == nullptr)
+    {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur chargement de la musique : %s", Mix_GetError());
+        Mix_CloseAudio();
+        SDL_Quit();
+        EXIT_FAILURE;
+    }
+
+    Mix_PlayMusic(music, -1); // Joue notre musique 
+ 
     SDL_Event events;
 	bool quit = false;
     //bool next = false;
 	while (!quit) {
+
 
 		while (SDL_PollEvent(&events)) {        
 			
@@ -334,8 +335,15 @@ void SdlLab::sdlLabBoucle(){
 
             } 
             if (jeu.partie_terminee()){
-                nouvellePartie();
-            }                               
+                  if(jeu.niv.getNum()<5){//on est a la derniere partie
+                    nouvellePartie();
+            }             
+            else {
+                    im_victoire.loadFromFile("data/victoire.jpeg",renderer);
+
+
+            }
+
         }
                     
 		// on affiche le jeu sur le buffer cach�
@@ -345,5 +353,14 @@ void SdlLab::sdlLabBoucle(){
         SDL_RenderPresent(renderer); 
     }
 }
+    }
+    // Arrêt de la musique
+    Mix_HaltMusic();
+
+    // Libération de la mémoire allouée
+    Mix_FreeMusic(music);
+    Mix_CloseAudio();
+    SDL_Quit();
 
 }
+
