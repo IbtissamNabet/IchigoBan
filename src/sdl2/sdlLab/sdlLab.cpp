@@ -163,8 +163,8 @@ void SdlLab::nouvellePartie()
 {
 
     jeu.setNiveau(jeu.niv.getNum()+1);
-    /*if(jeu.niv.getNum()==2) {
-        im_victoire.loadFromFile("data/victoire.jpeg",renderer);
+    if(jeu.niv.getNum()==2) {
+        im_victoire.loadFromFile("data/victoire.jpg",renderer);
         SDL_RenderClear(renderer);
         //recuperer la dimension de la fenetre 
         int larg;
@@ -181,7 +181,7 @@ void SdlLab::nouvellePartie()
 
     }
     else {
-*/
+
 
 
     SDL_DestroyRenderer(renderer);
@@ -210,7 +210,7 @@ void SdlLab::nouvellePartie()
     im_touches.loadFromFile("data/touches.png",renderer);
 
 }
-
+}
 
 void SdlLab::sdlLabAfficher () {
 	//Remplir l'écran de blanc
@@ -338,12 +338,6 @@ void SdlLab::sdlLabBoucle(){
                   if(jeu.niv.getNum()<5){//on est a la derniere partie
                     nouvellePartie();
             }             
-            else {
-                    im_victoire.loadFromFile("data/victoire.jpeg",renderer);
-
-
-            }
-
         }
                     
 		// on affiche le jeu sur le buffer cach�
@@ -360,6 +354,7 @@ void SdlLab::sdlLabBoucle(){
     // Libération de la mémoire allouée
     Mix_FreeMusic(music);
     Mix_CloseAudio();
+
     SDL_Quit();
 
 }
