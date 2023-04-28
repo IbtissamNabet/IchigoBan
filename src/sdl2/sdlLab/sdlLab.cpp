@@ -161,9 +161,10 @@ SdlLab::~SdlLab ()
 
 void SdlLab::nouvellePartie()
 {
+    SDL_SetRenderDrawColor(renderer, 230, 240, 255, 255);
+    SDL_RenderClear(renderer);
 
-    jeu.setNiveau(jeu.niv.getNum()+1);
-    if(jeu.niv.getNum()==2) {
+    if(jeu.niv.getNum()==5) {
         im_victoire.loadFromFile("data/victoire.jpg",renderer);
         SDL_RenderClear(renderer);
         //recuperer la dimension de la fenetre 
@@ -181,35 +182,8 @@ void SdlLab::nouvellePartie()
 
     }
     else {
-
-
-
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-	int dimx, dimy;
-	dimx = jeu.getNiveau().getLab().getDim().getLargeur();
-	dimy = jeu.getNiveau().getLab().getDim().getHauteur();
-    cout<<dimx<<" "<<dimy<<endl;
-	dimx = dimx * TAILLE_SPRITE+5*TAILLE_SPRITE;
-	dimy = dimy * TAILLE_SPRITE;
-    // Creation de la fenetre
-    window = SDL_CreateWindow("Ichigo'Ban", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, dimx, dimy, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
-    if (window == nullptr) {
-        cout << "Erreur lors de la creation de la fenetre : " << SDL_GetError() << endl; 
-        SDL_Quit(); 
-        exit(1);
+        jeu.setNiveau(jeu.niv.getNum()+1);
     }
-
-    //
-    renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
-    im_mur.loadFromFile("data/mur.png",renderer);
-    im_vide.loadFromFile("data/vide.png",renderer);
-    im_empcible.loadFromFile("data/empcible.png",renderer);
-    im_fraise.loadFromFile("data/fraise.png",renderer);
-    im_gardien.loadFromFile("data/gardien.png",renderer);
-    im_touches.loadFromFile("data/touches.png",renderer);
-
-}
 }
 
 void SdlLab::sdlLabAfficher () {
@@ -263,6 +237,7 @@ void SdlLab::sdlLabBoucle(){
        cout<<"erreur lors de l'initialisation de la SDL "<<endl;
         EXIT_FAILURE;
     }
+
     // Initialisation de SDL_Mixer
     if (Mix_OpenAudio(96000, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) < 0)
     {
@@ -282,7 +257,7 @@ void SdlLab::sdlLabBoucle(){
     }
 
     Mix_PlayMusic(music, -1); // Joue notre musique 
- 
+
     SDL_Event events;
 	bool quit = false;
     //bool next = false;
@@ -335,7 +310,7 @@ void SdlLab::sdlLabBoucle(){
 
             } 
             if (jeu.partie_terminee()){
-                  if(jeu.niv.getNum()<5){//on est a la derniere partie
+                  if(jeu.niv.getNum()<=5){//on est a la derniere partie
                     nouvellePartie();
             }             
         }
@@ -348,6 +323,7 @@ void SdlLab::sdlLabBoucle(){
     }
 }
     }
+
     // Arrêt de la musique
     Mix_HaltMusic();
 
