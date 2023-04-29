@@ -104,13 +104,61 @@ SdlLab::SdlLab()
 {
     // Initialisation de la SDL
     ///ouvrir le module des fonctions videos 
-    SDL_Init(SDL_INIT_VIDEO);
+        // Initialisation de la SDL
+    ///ouvrir le module des fonctions videos 
+    /*SDL_Init(SDL_INIT_VIDEO);
     if (SDL_Init(SDL_INIT_VIDEO) < 0) 
     {
         cout << "Erreur lors de l'initialisation de la SDL : " << SDL_GetError() << endl;
         SDL_Quit();
         exit(1);
     }
+    else {
+        SDL_Init(SDL_INIT_AUDIO); 
+      
+    // Initialisation de SDL_Mixer
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 2048) < 0)
+    {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur initialisation SDL_mixer : %s", Mix_GetError());
+        SDL_Quit();
+         EXIT_FAILURE; 
+    }
+
+    Mix_Music * music = Mix_LoadMUS("data/son.mp3"); // Charge notre musique
+
+    if (music == nullptr)
+    {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur chargement de la musique : %s", Mix_GetError());
+        Mix_CloseAudio();
+        SDL_Quit();
+        EXIT_FAILURE;
+    }
+
+    Mix_PlayMusic(music, -1); // Joue notre musique 
+    
+
+    }
+    */
+   if (SDL_Init(SDL_INIT_VIDEO) < 0) // SDL_INIT_EVERYTHING aussi
+        {
+        cout << endl
+        << "Erreur lors de l'initialisation de la SDL : " << SDL_GetError() << endl;
+        SDL_Quit();
+        exit(1);
+        }
+        else
+        {
+        SDL_Init(SDL_INIT_AUDIO); // initilisation de SDL2_mixer pour l'audio
+        Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+        son = Mix_LoadMUS("data/son.mp3"); // chargement du fichier audio
+        if (!son)
+        {
+        cout << "erreur de chargement du fichier audio : " << Mix_GetError() << endl;
+        exit(1);
+        }
+        Mix_PlayMusic(son, -1); // lecture de la musique en boucle
+        }
+
 
     int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
 
@@ -138,7 +186,8 @@ SdlLab::SdlLab()
         exit(1);
     }
 
-    renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_SOFTWARE);
+
 
     // IMAGES
     im_mur.loadFromFile("data/mur.png",renderer);
@@ -148,6 +197,8 @@ SdlLab::SdlLab()
     im_gardien.loadFromFile("data/gardien.png",renderer);
     im_touches.loadFromFile("data/touches.png",renderer);
 
+  
+
 }
 
 SdlLab::~SdlLab () 
@@ -155,6 +206,13 @@ SdlLab::~SdlLab ()
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+         // Arrêt de la musique
+    Mix_HaltMusic();
+
+    // Libération de la mémoire allouée
+    Mix_FreeMusic(son);
+    Mix_CloseAudio();
+
 }
 
 
@@ -233,30 +291,7 @@ void SdlLab::sdlLabAfficher () {
 }
 
 void SdlLab::sdlLabBoucle(){
-    if (SDL_Init(SDL_INIT_VIDEO) < 0){
-       cout<<"erreur lors de l'initialisation de la SDL "<<endl;
-        EXIT_FAILURE;
-    }
-
-    // Initialisation de SDL_Mixer
-    if (Mix_OpenAudio(96000, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) < 0)
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur initialisation SDL_mixer : %s", Mix_GetError());
-        SDL_Quit();
-         EXIT_FAILURE; 
-    }
-
-    Mix_Music* music = Mix_LoadMUS("data/son.mp3"); // Charge notre musique
-
-    if (music == nullptr)
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur chargement de la musique : %s", Mix_GetError());
-        Mix_CloseAudio();
-        SDL_Quit();
-        EXIT_FAILURE;
-    }
-
-    Mix_PlayMusic(music, -1); // Joue notre musique 
+ 
 
     SDL_Event events;
 	bool quit = false;
@@ -323,13 +358,6 @@ void SdlLab::sdlLabBoucle(){
     }
 }
     }
-
-    // Arrêt de la musique
-    Mix_HaltMusic();
-
-    // Libération de la mémoire allouée
-    Mix_FreeMusic(music);
-    Mix_CloseAudio();
 
     SDL_Quit();
 

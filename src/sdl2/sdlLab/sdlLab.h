@@ -18,6 +18,7 @@ private:
 
     SDL_Surface * m_surface;
     SDL_Texture * m_texture;
+   
     bool m_hasChanged;
 
 public:
@@ -36,6 +37,7 @@ private :
 
     SDL_Window * window;
     SDL_Renderer * renderer;
+      Mix_Music * son;
 
 /*  TTF_Font * font;
     Image font_im; 
