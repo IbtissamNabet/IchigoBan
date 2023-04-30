@@ -11,7 +11,6 @@ OBJ_COR=obj/core/Dimension.o \
 		obj/core/Jeu.o \
 		obj/core/Labyrinthe.o \
 		obj/core/Niveau.o \
-		obj/core/Partie.o \
 		obj/core/Position.o \
 		
 OBJ_REG=obj/core/mainTest.o 
