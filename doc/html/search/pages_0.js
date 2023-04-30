@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ichigoban_141',['IchigoBan',['../index.html',1,'']]]
+  ['ichigo_27ban_141',['ICHIGO&apos;BAN',['../index.html',1,'']]]
 ];

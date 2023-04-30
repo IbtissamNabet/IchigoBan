@@ -25,12 +25,10 @@
 var NAVTREE =
 [
   [ "ICHIGO'BAN", "index.html", [
-    [ "IchigoBan", "index.html", [
-      [ "Introduction", "index.html#intro", null ],
-      [ "Langage", "index.html#Langage", null ],
-      [ "Compilation", "index.html#Compilation", null ],
-      [ "Pour executer", "index.html#Execution", null ]
-    ] ],
+    [ "Introduction", "index.html#Introduction", null ],
+    [ "Langage", "index.html#Langage", null ],
+    [ "Compilation", "index.html#Compilation", null ],
+    [ "Execution", "index.html#Execution", null ],
     [ "Classes", "annotated.html", [
       [ "Liste des classes", "annotated.html", "annotated_dup" ],
       [ "Index des classes", "classes.html", null ],
