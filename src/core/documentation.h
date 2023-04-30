@@ -10,7 +10,7 @@
  * @section Compilation 
  * Se compile avec g++
  * @section Execution Pour executer
- * $ ./bin/pacman_txt <br>
+ * $ ./bin/sdlJeu <br>
  * ou <br>
- * $ ./bin/pacman_sdl <br>
+ * $ ./bin/txtJeu <br>
  */

@@ -76,5 +76,5 @@ grace a la classe  winTxt qui permet l'utilisation d'une fenêtre texte et des �
 . IchigoBan/obj       : répertoire comportant les compilations intermédiaires (.o)
 
 ## Documentation du code 
- la documentation du jeu est genérée avec doxygen (dossier html/IchigoBan) 
+ la documentation du jeu est genérée avec doxygen (dossier IchigoBan/doc/html) 
  
