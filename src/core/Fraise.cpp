@@ -19,7 +19,8 @@ void  Fraise::setPositionFraise(const Position & p){
      pos_Fraise.setPosX(p.getPosX());
      pos_Fraise.setPosY(p.getPosY());
 }
-void Fraise::gauche(const Labyrinthe& l, const Gardien& g) {
+
+void Fraise::gauche(const Labyrinthe& l, const Gardien& g){
     int x = pos_Fraise.getPosX();  // position actuelle de la fraise 
     int y = pos_Fraise.getPosY();
     int a = g.getPositionGardien().getPosX();  // position actuelle du gardien
@@ -34,6 +35,7 @@ void Fraise::gauche(const Labyrinthe& l, const Gardien& g) {
         cerr << "Erreur: Impossible de se déplacer à gauche fraise ." << endl;
     }
 }
+
 void  Fraise::droite(const Labyrinthe & l,const Gardien & g ){
     int x=pos_Fraise.getPosX();
     int y=pos_Fraise.getPosY();
@@ -44,11 +46,12 @@ void  Fraise::droite(const Labyrinthe & l,const Gardien & g ){
     p.setPosY(y);
     if (l.estPositionValide(p) && a == x && b == y) {
     pos_Fraise.setPosX(x + 1);
-}
+    }
     else {
     cerr << "Erreur: Impossible de se déplacer à droite fraise." << endl;
+    }
 }
-}
+
 void Fraise::haut(const Labyrinthe &l, const Gardien &g) {
     int x = pos_Fraise.getPosX();
     int y = pos_Fraise.getPosY();
@@ -57,13 +60,13 @@ void Fraise::haut(const Labyrinthe &l, const Gardien &g) {
     Position p;
     p.setPosX(x);
     p.setPosY(y - 1);
-   if (l.estPositionValide(p) && a == x && b == y) {
+    if (l.estPositionValide(p) && a == x && b == y) {
     pos_Fraise.setPosY(y - 1);
-}
+    }
     else {
         cerr << "Erreur: Impossible de se déplacer en haut fraise." << endl;
     }
-    }
+}
 
 void Fraise::bas(const Labyrinthe &l, const Gardien &g) {
     int x = pos_Fraise.getPosX();
@@ -75,7 +78,7 @@ void Fraise::bas(const Labyrinthe &l, const Gardien &g) {
     p.setPosY(y + 1);
     if (l.estPositionValide(p) && a == x && b == y) {
     pos_Fraise.setPosY(y + 1);
-}
+    }
     else {
         cerr << "Erreur: Impossible de se déplacer en bas fraise." << endl;
     }

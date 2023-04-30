@@ -33,6 +33,7 @@ const Labyrinthe& Niveau:: getLab() const{
 }
 
 void Niveau::setLab(int n){
+
 	string nom_fichier = "./data/niveau";
 	string m(to_string(n));
 	string extension=".txt";
@@ -66,9 +67,7 @@ void Niveau::setLab(int n){
         fichier>>ligne;
         for (int y=0; y<nb_colonnes; y++) {
             tableau[x][y] = ligne[y];
-            //cout<<tableau[x][y];
         }
-        //cout<<endl;
     }
     
     for (int x=0; x<nb_lignes; x++) {
@@ -99,10 +98,6 @@ void Niveau::setLab(int n){
         }
     } 
     nbFraises=posInit_Fraises.size(); 
-/*    cout<<"position gardien: "<<posInit_Gardien.getPosX()<<","<<posInit_Gardien.getPosY()<<endl;
-    for (int i=0;i<nbFraises;i++){
-        cout<<"position fraise: "<<posInit_Fraises[i].getPosX()<<","<<posInit_Fraises[i].getPosY()<<endl;
-    } */
 }
 
 vector<Position> Niveau::getPos_EmpCibles(){
@@ -124,16 +119,6 @@ void Niveau::ajouterFraise(const Position & p){
 
 void Niveau::ajouterEmpCible(const Position & p){
     pos_EmpCibles.push_back(p);
-}
-
-void Niveau::modifLab(){
-    Position p;
-    TypeLab t;
-    for (int i=0; i<(int)pos_EmpCibles.size(); i++){
-        p=pos_EmpCibles[i]; 
-        t=EMPCIBLE;
-        lab.setTypeLab(p,t);      
-    }
 }
 
 void Niveau::testRegression() const {

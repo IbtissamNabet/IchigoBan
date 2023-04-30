@@ -1,13 +1,9 @@
 #include"Gardien.h"
 #include<cassert>
 #include<iostream>
+#include "Gardien.h"
 
 using namespace std;
-
-
-
-
-#include "Gardien.h"
 
 Gardien::Gardien() {
     pos_gardien.setPosX(1);
@@ -24,7 +20,7 @@ void Gardien::setPositionGardien(const Position & p) {
 
 void Gardien::gauche(const Labyrinthe & l) {
     Position p(pos_gardien.getPosX() - 1, pos_gardien.getPosY());
-
+    
     if (l.estPositionValide(p)) {
         pos_gardien = p;
     }

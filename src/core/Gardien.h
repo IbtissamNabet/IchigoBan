@@ -1,11 +1,8 @@
 /**
  * @file Gardien.h
- 
- * @brief Module gérant les fonctionalités relatives à la création d'un personnage(joueur) et controler ses action pour 
- pouvoir pousser les fraises dans leurs emplacements cibles.
-   
-
-*/
+ * @brief Module gérant les fonctionalités relatives à la création et aux déplacements du gardien (joueur) dans un labyrinthe 
+ * dont le but est de pousser les fraises vers leurs emplacements cibles.
+ */
 
 //_______________________________________________________________________________________________________________________________________________________________
 #ifndef GARD_
@@ -14,67 +11,57 @@
 #include"Labyrinthe.h"
 
 /**
- 
- * @brief la class Gardien represente le joueur elle contient la position du joueur qui permettera de gérere ses déplacement .
-
-*/
+ * @class Gardien
+ * @brief classe representant le gardien, elle contient la position du gardien
+ */
 class Gardien {
     
 public :
-Position pos_gardien; 
+    Position pos_gardien; 
 
- /**
-    @brief <B>Construit</B> un objet Gardien .
-    Le  constructeur crée un objet Gardien par defaut a la premiere case du tableau 2D
-*/
-Gardien();
-//___________________________________________________________________________________________________________________________________________________________________
-/**
-    @brief
-    La fonction getPositionGardien récupere la position du joueur  
-*/
-Position  getPositionGardien()const;
-//___________________________________________________________________________________________________________________________________________________________________
-/**
-    @brief
-    La procedure setPositionGardien modofie la position du joueur en la mettant a la position donnée en paramétre 
-    @param p: la nouvelle position du Gardien  
-*/
+    /**
+     * @brief <B>Construit</B> un objet Gardien.
+     * Le  constructeur crée un objet Gardien par defaut à la position (1,1) d'un labyrinthe
+     */
+    Gardien();
 
-void  setPositionGardien(const Position & p);
-//___________________________________________________________________________________________________________________________________________________________________
-/**
-    @brief
-    La procedure gauche permet de faire bouger le gardien a gauche (a la case d'à coté ) 
-    @param l: le labyrinthe ou deplacer le gardien 
-*/
-void gauche(const Labyrinthe & l);
-//___________________________________________________________________________________________________________________________________________________________________
-/**
-    @brief
-    La procedure droite permet de faire bouger le gardien a droite(a la case d'à coté ) 
-    @param l: le labyrinthe ou deplacer le gardien 
-*/
-void droite(const Labyrinthe & l );
-//___________________________________________________________________________________________________________________________________________________________________
-/**
-    @brief
-    La procedure haut permet de faire bouger le gardien en haut (a la case du  dessus) 
-    @param l: le labyrinthe ou deplacer le gardien 
-*/
-void haut(const Labyrinthe & l );
-//___________________________________________________________________________________________________________________________________________________________________
-/**
-    @brief
-    La procedure gauche permet de faire bouger le gardien a en bas  (a la case du bas ) 
-    @param l: le labyrinthe ou deplacer le gardien 
-*/
-void bas(const Labyrinthe &l);
+    /**
+     * @brief Accesseur de l'attribut pos_Gardien
+     * @return la position du Gardien
+     */
+    Position  getPositionGardien()const;
 
+    /**
+     * @brief Mutateur de l'attribut pos_Gardien
+     * @param p: la nouvelle position du Gardien 
+     */
+    void  setPositionGardien(const Position & p);
 
-void testRegression(const Labyrinthe & l);
+    /**
+     * @brief Permet de déplacé le gardien d'une case vers la gauche dans le labyrinthe
+     * @param l objet de type Labyrinthe 
+     */
+    void gauche(const Labyrinthe & l);
 
+    /**
+     * @brief Permet de déplacé le gardien d'une case vers la droite dans le labyrinthe
+     * @param l objet de type Labyrinthe 
+     */
+    void droite(const Labyrinthe & l );
 
+    /**
+     * @brief Permet de déplacé le gardien d'une case vers le haut dans le labyrinthe
+     * @param l objet de type Labyrinthe 
+     */
+    void haut(const Labyrinthe & l );
+
+    /**
+     * @brief Permet de déplacé le gardien d'une case vers le bas dans le labyrinthe
+     * @param l objet de type Labyrinthe 
+     */
+    void bas(const Labyrinthe &l);
+
+    void testRegression(const Labyrinthe & l);
 
 };
 

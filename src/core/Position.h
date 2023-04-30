@@ -1,78 +1,61 @@
 /**
  * @file Position.h
- 
  * @brief Module gérant les fonctionalités relatives à la position d'un composant dans le labyrinthe 
-
-*/
-//_______________________________________________________________________________________________________________________________________________________________
-
+ */
 #ifndef POSITION_H
 #define POSITION_H
 
 
 /**
- 
- * @brief la class position contient deux paramétres membres étant la position de la colonne x et la ligne y  .
-
-*/
+ * @class Position 
+ * @brief Classe contenant deux données membres représentant la position x et la position y.
+ */
 
 class Position {
+
     private :
     int x,y ;
+
     public: 
-    /**
-    @brief <B>Construit</B> un objet Position.
-    Le  constructeur crée un objet Position par defaut (mets x et y a 0 );
-*/
 
+    /**
+     * @brief <B>Construit</B> un objet Position.
+     * Le  constructeur crée un objet Position par defaut (mets x et y a 0 );
+     */
     Position();
-//___________________________________________________________________________________________________________________________________________________________________
+
     /**
-    @brief <B>Construit</B> un objet Position.
-    Le  constructeur crée un objet Position en donnant à x et y les valeurs de a et b;
-*/  
+     * @brief <B>Construit</B> un objet Position.
+     * Le  constructeur crée un objet Position en donnant à x et y les valeurs de a et b;
+     * @param a valeur à affecter à la position x
+     * @param b valeur à affecter à la position y
+     */  
     Position(int a, int b);
-//___________________________________________________________________________________________________________________________________________________________________
-/**
-    @brief
-    La fonction getPosX récupere l'indice de la  colonne X 
-*/
+
+    /**
+     * @brief Accesseur de l'attribut x
+     * @return un entier représentant la position x
+     */
     int getPosX() const ;
-//___________________________________________________________________________________________________________________________________________________________________
-/**
-    @brief
-    La fonction getPosY récupere l'indice de la ligne Y
-*/
+
+    /**
+     * @brief Accesseur de l'attribut y
+     * @return un entier représentant la position y
+     */
     int getPosY() const ;
-//___________________________________________________________________________________________________________________________________________________________________
-/**
-    @brief
-    La procedure setPosX remplace l'indice de la  colonne X par a 
-    @param a:la nouvelle colonne 
 
-*/
-
+    /**
+     * @brief Mutateur de l'attribut x
+     * @param a un entier à affecter à x  
+     */
     void setPosX( int a );
-//___________________________________________________________________________________________________________________________________________________________________
-/**
-    @brief
-    La procedure setPosX remplace l'indice de la  cligne Y par b
-    @param b:la nouvelle ligne
 
-*/
-
+    /**
+     * @brief Mutateur de l'attribut y
+     * @param b un entier à affecter à y 
+     */
     void setPosY( int b);
-
-    
-
-
-
-
-
 };
-
-
-
 
 #endif 
 

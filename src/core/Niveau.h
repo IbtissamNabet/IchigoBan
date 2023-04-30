@@ -1,10 +1,8 @@
 /**
  * @file Niveau.h
  * @brief Module gérant un niveau du jeu Ichigo'Ban   
-*/
-
+ */
 using namespace std;;
-
 
 #ifndef _NIVEAU_H
 #define _NIVEAU_H
@@ -14,8 +12,9 @@ using namespace std;;
 #include "Position.h"
 
 /**
+ * @class Niveau
  * @brief la class Niveau contient le numero du niveau, le labyrinthe, la position initiale des emplacements cible et des fraises, le nombre de fraises.
-*/
+ */
 
 class Niveau {
 
@@ -27,96 +26,80 @@ private :
     Position posInit_Gardien;
 
 public:
-/**
-    @brief <B>Construit</B> un niveau .
-*/
+
+    /**
+     * @brief <B>Construit</B> un niveau
+     * les données num et nbFraises valent 0
+     */
     Niveau();
-//___________________________________________________________________________________________________________________________________________________________________
 
-/**   
-    @brief la fonction getNum renvoie le numero du niveau
-*/
+    /**
+     * @brief Accesseur de l'attribut num du niveau
+     * @return un entier représentant le numéro du niveau
+     */
     int getNum();
-//________________________________________________________________________________________________________________________________________________________________________
 
-/**
-    @brief la fonction setNum met la valeur du numero du niveau selon la valeur passée en paramètre
-    @param n: le numero du niveau
-*/
+    /**
+     * @brief Mutateur de l'attribut num du niveau
+     * @param n un entier à affecter à num  
+     */
     void setNum(int n);
 
-//________________________________________________________________________________________________________________________________________________________________________
-
-/**   
-    @brief la fonction getNbFraises renvoie le nombre de fraise du niveau
-*/
+    /**
+     * @brief Accesseur de l'attribut nbFraises du niveau
+     * @return un entier représentant le nombre de fraises du niveau
+     */
     int getNbFraises() const;
-//________________________________________________________________________________________________________________________________________________________________________
 
-/**
-    @brief la fonction setNbFraises met le nombre de fraises avec la valeur en paramètre
-    @param n: nb fraises
-*/
+    /**
+     * @brief Mutateur de l'attribut nbFraises du niveau
+     * @param n un entier à affecter à nbFraises 
+     */
     void setNbFraises(int n);
-//________________________________________________________________________________________________________________________________________________________________________
 
-/**   
-    @brief la fonction getLab renvoie le labyrinthe
-*/
+    /**   
+     * @brief la fonction getLab renvoie l'attribut lab du niveau
+     * @return un objet de type Labyrinthe
+     */
     const Labyrinthe& getLab() const;
 
-//________________________________________________________________________________________________________________________________________________________________________
-
-/**   
-    @brief la fonction setLab modifie le labyrinthe selon l'entier entré en paramètre
-    @param n: entier correspondant au numéro du niveau
-*/
+    /**   
+     * @brief la fonction setLab modifie le labyrinthe selon l'entier entré en paramètre
+     * @param n: entier correspondant au numéro du niveau
+     */
     void setLab(int n);
 
-//________________________________________________________________________________________________________________________________________________________________________
-
-/**   
-    @brief la fonction getPos_EmpCibles renvoie le tableau contenant la position des emplacements cible
-*/
+    /**   
+     * @brief Accesseur de l'attribut pos_EmpCibles représentant les positions des emplacements cibles du niveau
+     * @return un tableau dynamique de position
+     */
     vector <Position>getPos_EmpCibles();
-//________________________________________________________________________________________________________________________________________________________________________
 
-/**   
-    @brief la fonction getPosInit_Fraises renvoie le tableau contenant la position initiale des fraises
-*/
+    /**   
+     * @brief Accesseur de l'attribut posInit_Fraises représentant les positions initiales des fraises du niveau
+     * @return un tableau dynamique de position
+     */
     vector <Position>getPosInit_Fraises();
-//________________________________________________________________________________________________________________________________________________________________________
 
-/**   
-    @brief la fonction getPosInit_Gardien renvoie la position initiale du Gardien
-*/
+    /**   
+     * @brief Accesseur de l'attribut posInit_Gardien représentant la position initiale du gardien dans le niveau
+     * @return une position
+     */
     Position getPosInit_Gardien()const;
-//________________________________________________________________________________________________________________________________________________________________________
 
-
-/**
-    La procedure ajouterFraise ajoute une fraise dans le niveau
-    @param p: la position initiale de la nouvelle fraise
-*/
+    /**
+     * @brief procedure ajouterFraise ajoute une fraise dans le niveau
+     * @param p: la position initiale de la nouvelle fraise
+    */
     void ajouterFraise(const Position & p);
-//___________________________________________________________________________________________________________________________________________________________________
 
-/**
-    La procedure ajouterEmpCible ajoute un emplacement cible dans le niveau
-    @param p: la position de la nouvelle emplacement cible
-*/
+    /**
+     * @brief procedure ajouterEmpCible ajoute un emplacement cible dans le niveau
+     * @param p: la position de la nouvelle emplacement cible
+     */
     void ajouterEmpCible(const Position & p);
 
-/**
-    La procedure modifLab met à jour le labyrinthe en y ajoutant les nouvelles emplacements cibles
-    @param p: la position de la nouvelle emplacement cible
-*/
-    void modifLab();
-
-/**
-     * @brief Effectue une série de tests vérifiant que le module fonctionne sans problémes 
-*/
-   void testRegression() const ;
+    void testRegression() const ;
 };
 
 #endif

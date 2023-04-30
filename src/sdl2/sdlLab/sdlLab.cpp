@@ -10,8 +10,8 @@ using namespace std;
 const int TAILLE_SPRITE = 32;
 
 Image::Image () : m_surface(nullptr), m_texture(nullptr), m_hasChanged(false) { }
-Image::~Image()
-{
+
+Image::~Image() {
     if (m_texture != nullptr) {
         SDL_DestroyTexture(m_texture);
         m_texture = nullptr;
@@ -57,8 +57,7 @@ void Image::loadFromFile (const char* filename, SDL_Renderer * renderer) {
 
 }
 
-void Image::loadFromCurrentSurface (SDL_Renderer * renderer) 
-{
+void Image::loadFromCurrentSurface (SDL_Renderer * renderer) {
     m_texture = SDL_CreateTextureFromSurface(renderer,m_surface);
     if (m_texture == nullptr) {
         cout << "Error: problem to create the texture from surface " << endl;
@@ -68,8 +67,7 @@ void Image::loadFromCurrentSurface (SDL_Renderer * renderer)
 
 }
 
-void Image::draw (SDL_Renderer * renderer, int x, int y, int w, int h) 
-{
+void Image::draw (SDL_Renderer * renderer, int x, int y, int w, int h) {
     int ok;
     SDL_Rect r;
     r.x = x;
@@ -89,75 +87,38 @@ void Image::draw (SDL_Renderer * renderer, int x, int y, int w, int h)
 
 }
 
-SDL_Texture * Image::getTexture() const 
-{
+SDL_Texture * Image::getTexture() const {
     return m_texture;
 }
 
-void Image::setSurface(SDL_Surface * surf) 
-{
+void Image::setSurface(SDL_Surface * surf) {
     m_surface = surf;
 }
 
 
-SdlLab::SdlLab()
-{
-    // Initialisation de la SDL
-    ///ouvrir le module des fonctions videos 
-        // Initialisation de la SDL
-    ///ouvrir le module des fonctions videos 
-    /*SDL_Init(SDL_INIT_VIDEO);
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) 
+SdlLab::SdlLab(){
+
+    // Initialisation de la SDL, ouverture du module des fonctions videos 
+    SDL_Init(SDL_INIT_VIDEO);
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) // SDL_INIT_EVERYTHING aussi
     {
-        cout << "Erreur lors de l'initialisation de la SDL : " << SDL_GetError() << endl;
-        SDL_Quit();
-        exit(1);
-    }
-    else {
-        SDL_Init(SDL_INIT_AUDIO); 
-      
-    // Initialisation de SDL_Mixer
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 2048) < 0)
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur initialisation SDL_mixer : %s", Mix_GetError());
-        SDL_Quit();
-         EXIT_FAILURE; 
-    }
-
-    Mix_Music * music = Mix_LoadMUS("data/son.mp3"); // Charge notre musique
-
-    if (music == nullptr)
-    {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Erreur chargement de la musique : %s", Mix_GetError());
-        Mix_CloseAudio();
-        SDL_Quit();
-        EXIT_FAILURE;
-    }
-
-    Mix_PlayMusic(music, -1); // Joue notre musique 
-    
-
-    }
-    */
-   if (SDL_Init(SDL_INIT_VIDEO) < 0) // SDL_INIT_EVERYTHING aussi
-        {
         cout << endl
         << "Erreur lors de l'initialisation de la SDL : " << SDL_GetError() << endl;
         SDL_Quit();
         exit(1);
-        }
-        else
-        {
+    }
+    else
+    {
         SDL_Init(SDL_INIT_AUDIO); // initilisation de SDL2_mixer pour l'audio
         Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
         son = Mix_LoadMUS("data/son.mp3"); // chargement du fichier audio
         if (!son)
         {
-        cout << "erreur de chargement du fichier audio : " << Mix_GetError() << endl;
-        exit(1);
+            cout << "erreur de chargement du fichier audio : " << Mix_GetError() << endl;
+            exit(1);
         }
         Mix_PlayMusic(son, -1); // lecture de la musique en boucle
-        }
+    }
 
 
     int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
@@ -197,28 +158,23 @@ SdlLab::SdlLab()
     im_gardien.loadFromFile("data/gardien.png",renderer);
     im_touches.loadFromFile("data/touches.png",renderer);
 
-  
-
 }
 
-SdlLab::~SdlLab () 
-{
+SdlLab::~SdlLab () {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-         // Arrêt de la musique
+    // Arrêt de la musique
     Mix_HaltMusic();
-
     // Libération de la mémoire allouée
     Mix_FreeMusic(son);
-    Mix_CloseAudio();
-
+    Mix_CloseAudio(); 
 }
 
 
 
-void SdlLab::nouvellePartie()
-{
+void SdlLab::nouvellePartie() {
+
     SDL_SetRenderDrawColor(renderer, 230, 240, 255, 255);
     SDL_RenderClear(renderer);
 
@@ -239,12 +195,14 @@ void SdlLab::nouvellePartie()
         exit(0);
 
     }
+
     else {
         jeu.setNiveau(jeu.niv.getNum()+1);
     }
 }
 
 void SdlLab::sdlLabAfficher () {
+
 	//Remplir l'écran de blanc
     SDL_SetRenderDrawColor(renderer, 230, 240, 255, 255);
     SDL_RenderClear(renderer);
@@ -252,10 +210,9 @@ void SdlLab::sdlLabAfficher () {
     Position p;
 	int x,y;
 
-
     // Afficher les murs, les emplacements cibles et les emplacements vides
-	for (x=0;x<jeu.getNiveau().getLab().getDim().getLargeur();++x){
-		for (y=0;y<jeu.getNiveau().getLab().getDim().getHauteur();++y){
+	for (x=0;x<jeu.getNiveau().getLab().getDim().getLargeur();++x) {
+		for (y=0;y<jeu.getNiveau().getLab().getDim().getHauteur();++y) {
             p=Position(x,y);
 			if (jeu.getNiveau().getLab().getTypeLab(p)==MUR)
 				im_mur.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
@@ -272,94 +229,86 @@ void SdlLab::sdlLabAfficher () {
     im_gardien.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
 
     //Afficher les fraises
-    for(int i=0; i<jeu.getNiveau().getNbFraises(); i++){
-        
+    for(int i=0; i<jeu.getNiveau().getNbFraises(); i++) {       
         x=jeu.getFraise()[i].getPositionFraise().getPosX();
         y=jeu.getFraise()[i].getPositionFraise().getPosY();
 		im_fraise.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
-
     }
 
-    //afichage des touches 
-    x =(jeu.getNiveau().getLab().getDim().getLargeur());
+    //aficher les touches 
+    x = (jeu.getNiveau().getLab().getDim().getLargeur());
     y = (jeu.getNiveau().getLab().getDim().getHauteur());
-
     im_touches.draw(renderer,x*TAILLE_SPRITE,0*TAILLE_SPRITE,TAILLE_SPRITE*5,TAILLE_SPRITE*5);
-
-
 
 }
 
-void SdlLab::sdlLabBoucle(){
- 
+void SdlLab::sdlLabBoucle() {
 
     SDL_Event events;
 	bool quit = false;
-    //bool next = false;
 	while (!quit) {
-
 
 		while (SDL_PollEvent(&events)) {        
 			
-            switch ((events.type)){
+            switch (events.type) {
                     
                 case(SDL_QUIT):
-                         quit = true;  
-                         break;   
+                    quit = true;  
+                    break; 
+
                 case(SDL_KEYDOWN):
+                    if(events.key.keysym.sym==SDLK_ESCAPE){
+                        quit=true;
+                        break;
+                    }
 
-                        if(events.key.keysym.sym==SDLK_ESCAPE){
-                            quit=true;
-                            break;
-                        }
-
-                        if(events.key.keysym.sym==SDLK_RIGHT){
-                            // Regarde si on appuyer sur la touche f
-                            jeu.toucheClavier('d');
-                             
-                        }
-
-                        if(events.key.keysym.sym==SDLK_LEFT){
-                            // Regarde si on appuyer sur la touche d 
-                            jeu.toucheClavier('g');
-                             
-                        }
-                        
-                        if(events.key.keysym.sym==SDLK_UP){
-                            // Regarde si on appuyer sur la touche e 
-                            jeu.toucheClavier('h');
-                             
-                        }
+                    if(events.key.keysym.sym==SDLK_RIGHT){
+                        // Regarde si on appuyer sur la touche f
+                        jeu.toucheClavier('d');
                             
-                        if(events.key.keysym.sym==SDLK_DOWN){
-                             // Regarde si on appuyer sur la touche d
-                            jeu.toucheClavier('b');
-                             
-                        } 
-                         if(events.key.keysym.sym==SDLK_r){
-                             // Regarde si on appuyer sur la touche d
-                            jeu.rejouer_partie();
+                    }
+
+                    if(events.key.keysym.sym==SDLK_LEFT){
+                        // Regarde si on appuyer sur la touche d 
+                        jeu.toucheClavier('g');
+                            
+                    }
+                    
+                    if(events.key.keysym.sym==SDLK_UP){
+                        // Regarde si on appuyer sur la touche e 
+                        jeu.toucheClavier('h');
+                            
+                    }
+                        
+                    if(events.key.keysym.sym==SDLK_DOWN){
+                        // Regarde si on appuyer sur la touche d
+                        jeu.toucheClavier('b');
+                            
+                    } 
+                    if(events.key.keysym.sym==SDLK_r){
+                        // Regarde si on appuyer sur la touche d
+                        jeu.rejouer_partie();
+                    }
+
                 default:
                     quit=false;
-                    
+            }
 
-            } 
-            if (jeu.partie_terminee()){
-                  if(jeu.niv.getNum()<=5){//on est a la derniere partie
+            if (jeu.partie_terminee()) {
+                if(jeu.niv.getNum()<=5) {
+                    //on est a la derniere partie
                     nouvellePartie();
-            }             
-        }
+                }             
+            }
                     
-		// on affiche le jeu sur le buffer cach�
-		sdlLabAfficher();
+            // on affiche le jeu sur le buffer cach�
+            sdlLabAfficher();
 
-		// on permute les deux buffers 
-        SDL_RenderPresent(renderer); 
-    }
-}
+            // on permute les deux buffers 
+            SDL_RenderPresent(renderer); 
+        }
     }
 
     SDL_Quit();
-
 }
 
