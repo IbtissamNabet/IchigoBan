@@ -1,7 +1,15 @@
+/**
+ * @file wintxt.h
+ * @brief Module gérant une fenetre texte 
+ */
+ 
 #ifndef WINTXT_H
 #define WINTXT_H
 
-//! \brief une fentre texte est un tableau 2D de caractres
+/**
+ * @class WinTXT
+ * @brief classe représentant une fenetre texte avec un tableau 2D de caractères
+ */
 class WinTXT
 {
 private:

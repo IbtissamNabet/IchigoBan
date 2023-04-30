@@ -13,7 +13,7 @@
 
 /**
  * @class Fraise
- * @brief classe representant la fraise, elle contient la position de la fraise 
+ * @brief Classe representant la fraise, elle contient la Position de la fraise 
  */
 
 class Fraise {
@@ -25,7 +25,7 @@ public:
 
     /**
      * @brief <B>Construit</B> un objet Fraise.
-     * Le  constructeur crée un objet Fraise par defaut à la position (1,1) d'un labyrinthe
+     * <br> Le  constructeur crée un objet Fraise par defaut à la position (1,1) d'un labyrinthe
      */
     Fraise();
 

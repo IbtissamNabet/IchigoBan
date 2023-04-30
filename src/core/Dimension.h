@@ -7,7 +7,7 @@
 
 /**
  * @class Dimension
- * @brief classe représentant deux données membres: la largeur et la hauteur 
+ * @brief Classe représentant deux données membres: la largeur et la hauteur 
  */
 class Dimension {
     private:
@@ -29,7 +29,7 @@ class Dimension {
 
         /**
          * @brief Accesseur de l'attribut Hauteur représentant la Hauteur du labyrinthe 
-         * @return la hauteur du labyrinthe
+         * @return La hauteur du labyrinthe
          */
         int getHauteur() const;
 

@@ -13,7 +13,7 @@ using namespace std;;
 
 /**
  * @class Niveau
- * @brief la class Niveau contient le numero du niveau, le labyrinthe, la position initiale des emplacements cible et des fraises, le nombre de fraises.
+ * @brief La classe Niveau contient le numero du niveau, le Labyrinthe, la Position initiale des emplacements cible et des fraises, le nombre de fraises.
  */
 
 class Niveau {

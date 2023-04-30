@@ -1,7 +1,7 @@
 /**
  * @file Jeu.h
  * @brief Module gérant les fonctionalités relatives à la création, au déroulement et à la terminaison d'une partie .
- * une partie/Jeu contient un tableau de fraises (fraises), un gardien (gard), et un niveau (niv)
+ * <br> une partie/Jeu contient un tableau de fraises (fraises), un gardien (gard), et un niveau (niv)
 */
 
 #ifndef _JEU_H
@@ -13,7 +13,7 @@
 
 /**
  * @class Jeu
- * @brief La classe Jeu contient un tableau de fraises (fraises), un gardien (gard), et un niveau (niv)
+ * @brief La classe Jeu contient un tableau de Fraise (fraises), un Gardien (gard), et un Niveau (niv)
  */
 
 class Jeu {
@@ -28,13 +28,13 @@ public :
 
     /**
      * @brief <B>Construit</B> un Jeu
-     * Le Jeu ne contiennant aucunes fraises
+     * <br> Le Jeu ne contiennant aucunes fraises
      */
     Jeu();
 
     /**
      * @brief <B>Detruit</B> un objet Labyrinthe .
-     * Le destucteur désaloue le tableau de Fraises et détruit tout les autres données membres
+     * <br> Le destucteur désaloue le tableau de Fraises et détruit tout les autres données membres
      */    
     ~Jeu();
 
@@ -82,7 +82,7 @@ public :
     
     /**   
      * @brief Fonction permettant de rejouer la partie 
-     * le gardien est les fraises reviennent à leur position initiale
+     * <br> le gardien est les fraises reviennent à leur position initiale
      */    
     void rejouer_partie();
 };

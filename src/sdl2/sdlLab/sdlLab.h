@@ -16,7 +16,7 @@
 /**
  * @class Image
  * @brief Classe gérant les images
- * Contient une surface m_surface et une texture m_texture
+ * <br> Contient une surface m_surface et une texture m_texture
  */
 class Image {
 
@@ -39,7 +39,7 @@ public:
 /**
  * @class SdlLab
  * @brief Classe gérant l'affichage du labyrinthe et des autres éléments du jeu avec SDL
- * Contient les images des différents composants du labyrinthe et du jeu
+ * <br> Contient les images de type Image des différents composants du labyrinthe et du Jeu
  */
 class SdlLab {
 
@@ -63,8 +63,8 @@ public :
 
     /**
      * @brief <B>Construit</B> un objet SdlLab
-     * charge tout les images
-     * initialise le niveau du jeu à 0
+     * <br> charge tout les images
+     * <br> initialise le niveau du jeu à 0
      */
     SdlLab();
     ~SdlLab ();

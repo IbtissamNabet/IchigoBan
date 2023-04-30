@@ -12,7 +12,7 @@
 
 /**
  * @class Gardien
- * @brief classe representant le gardien, elle contient la position du gardien
+ * @brief classe representant le gardien, elle contient la Position du gardien
  */
 class Gardien {
     
@@ -21,7 +21,7 @@ public :
 
     /**
      * @brief <B>Construit</B> un objet Gardien.
-     * Le  constructeur crée un objet Gardien par defaut à la position (1,1) d'un labyrinthe
+     * <br> Le  constructeur crée un objet Gardien par defaut à la position (1,1) d'un labyrinthe
      */
     Gardien();
 

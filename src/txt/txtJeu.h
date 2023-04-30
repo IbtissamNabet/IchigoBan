@@ -1,3 +1,7 @@
+/**
+ * @file txtJeu.h
+ * @brief Module gérant l'affichage texte du jeu IchigoBan
+*/
 #ifndef _TXTJEU_H
 #define _TXTJEU_H
 #include "Jeu.h"
