@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ICHIGO&#39;BAN:  Fichier source de /mnt/e/Maths info Lyon 1/L2/LIFAPCDA/Azy/IchigoBan/src/core/Labyrinthe.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ICHIGO&#39;BAN
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Jeu de plateau</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_labyrinthe_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Labyrinthe.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_labyrinthe_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef LABY_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define LABY_H </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_dimension_8h.html">Dimension.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_position_8h.html">Position.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">enum</span> TypeLab { VIDE = <span class="charliteral">&#39;.&#39;</span> , MUR = <span class="charliteral">&#39;#&#39;</span> ,EMPCIBLE=<span class="charliteral">&#39;*&#39;</span> };</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_labyrinthe.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_labyrinthe.html">Labyrinthe</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   private : </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      <a class="code" href="class_dimension.html">Dimension</a> dimL;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;      TypeLab * tabLab;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;       <a class="code" href="class_labyrinthe.html#a46d8e42b8f59bf7e24ac7a967ac30e6e">Labyrinthe</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <a class="code" href="class_labyrinthe.html#a572f358948a867681be92de6a2314e82">~Labyrinthe</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      TypeLab <a class="code" href="class_labyrinthe.html#a2bc2eae731ebc0276a1340e304106396">getTypeLab</a> (<span class="keyword">const</span> <a class="code" href="class_position.html">Position</a> &amp; p )<span class="keyword">const</span> ;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;     </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <a class="code" href="class_dimension.html">Dimension</a>  <a class="code" href="class_labyrinthe.html#adc0b277452c32b348d9f261087d6b713">getDim</a>() <span class="keyword">const</span> ;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="class_labyrinthe.html#abe7f59197f6e579b88b24e5acb53f33a">setDim</a>(<span class="keywordtype">int</span> hauteur, <span class="keywordtype">int</span> largeur);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;   </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      TypeLab * <a class="code" href="class_labyrinthe.html#ae0b81765be4b61566c070a22bf3bca94">getTabLab</a>() <span class="keyword">const</span> ;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;   </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="keywordtype">bool</span> <a class="code" href="class_labyrinthe.html#a8aece7466075dcea70f3c6288359edf1">estPositionValide</a>(<span class="keyword">const</span> <a class="code" href="class_position.html">Position</a> &amp; p)<span class="keyword">const</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keywordtype">void</span> testRegression() <span class="keyword">const</span> ;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_dimension_8h_html"><div class="ttname"><a href="_dimension_8h.html">Dimension.h</a></div><div class="ttdoc">Module gérant les fonctionalités relatives à la Dimension d'un labyrinthe.</div></div>
+<div class="ttc" id="a_position_8h_html"><div class="ttname"><a href="_position_8h.html">Position.h</a></div><div class="ttdoc">Module gérant les fonctionalités relatives à la position d'un composant dans le labyrinthe.</div></div>
+<div class="ttc" id="aclass_dimension_html"><div class="ttname"><a href="class_dimension.html">Dimension</a></div><div class="ttdoc">Classe représentant deux données membres: la largeur et la hauteur.</div><div class="ttdef"><b>Definition:</b> Dimension.h:12</div></div>
+<div class="ttc" id="aclass_labyrinthe_html"><div class="ttname"><a href="class_labyrinthe.html">Labyrinthe</a></div><div class="ttdoc">La classe contenant les caractéristiques d'un labyrinthe   Dont une Dimension dimension dimL   Et un ...</div><div class="ttdef"><b>Definition:</b> Labyrinthe.h:21</div></div>
+<div class="ttc" id="aclass_labyrinthe_html_a2bc2eae731ebc0276a1340e304106396"><div class="ttname"><a href="class_labyrinthe.html#a2bc2eae731ebc0276a1340e304106396">Labyrinthe::getTypeLab</a></div><div class="ttdeci">TypeLab getTypeLab(const Position &amp;p) const</div><div class="ttdoc">la fonction getTypeLab renvoie le type de case qui se trouve dans la position donnée en parametre</div><div class="ttdef"><b>Definition:</b> Labyrinthe.cpp:37</div></div>
+<div class="ttc" id="aclass_labyrinthe_html_a46d8e42b8f59bf7e24ac7a967ac30e6e"><div class="ttname"><a href="class_labyrinthe.html#a46d8e42b8f59bf7e24ac7a967ac30e6e">Labyrinthe::Labyrinthe</a></div><div class="ttdeci">Labyrinthe()</div><div class="ttdoc">Construit un objet Labyrinthe   Le le constructeur crée un objet labyrinthe par defaut</div><div class="ttdef"><b>Definition:</b> Labyrinthe.cpp:8</div></div>
+<div class="ttc" id="aclass_labyrinthe_html_a572f358948a867681be92de6a2314e82"><div class="ttname"><a href="class_labyrinthe.html#a572f358948a867681be92de6a2314e82">Labyrinthe::~Labyrinthe</a></div><div class="ttdeci">~Labyrinthe()</div><div class="ttdoc">Detruit un objet Labyrinthe .   Le destucteur désaloue le tableau 2D crée et met les dimensions a 0</div><div class="ttdef"><b>Definition:</b> Labyrinthe.cpp:14</div></div>
+<div class="ttc" id="aclass_labyrinthe_html_a8aece7466075dcea70f3c6288359edf1"><div class="ttname"><a href="class_labyrinthe.html#a8aece7466075dcea70f3c6288359edf1">Labyrinthe::estPositionValide</a></div><div class="ttdeci">bool estPositionValide(const Position &amp;p) const</div><div class="ttdoc">Teste si une position est valide elle est dans le labyrinthe et n'est pas un mur.</div><div class="ttdef"><b>Definition:</b> Labyrinthe.cpp:49</div></div>
+<div class="ttc" id="aclass_labyrinthe_html_abe7f59197f6e579b88b24e5acb53f33a"><div class="ttname"><a href="class_labyrinthe.html#abe7f59197f6e579b88b24e5acb53f33a">Labyrinthe::setDim</a></div><div class="ttdeci">void setDim(int hauteur, int largeur)</div><div class="ttdoc">Mutateur de l'attribut dimL du labyrinthe.</div><div class="ttdef"><b>Definition:</b> Labyrinthe.cpp:28</div></div>
+<div class="ttc" id="aclass_labyrinthe_html_adc0b277452c32b348d9f261087d6b713"><div class="ttname"><a href="class_labyrinthe.html#adc0b277452c32b348d9f261087d6b713">Labyrinthe::getDim</a></div><div class="ttdeci">Dimension getDim() const</div><div class="ttdoc">Accesseur de l'attribut DimL du labyrinthe.</div><div class="ttdef"><b>Definition:</b> Labyrinthe.cpp:24</div></div>
+<div class="ttc" id="aclass_labyrinthe_html_ae0b81765be4b61566c070a22bf3bca94"><div class="ttname"><a href="class_labyrinthe.html#ae0b81765be4b61566c070a22bf3bca94">Labyrinthe::getTabLab</a></div><div class="ttdeci">TypeLab * getTabLab() const</div><div class="ttdoc">Renvoie un pointeur sur un tableau de TypeLab.</div><div class="ttdef"><b>Definition:</b> Labyrinthe.cpp:33</div></div>
+<div class="ttc" id="aclass_position_html"><div class="ttname"><a href="class_position.html">Position</a></div><div class="ttdoc">Classe contenant deux données membres représentant la position x et la position y.</div><div class="ttdef"><b>Definition:</b> Position.h:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="_labyrinthe_8h.html">Labyrinthe.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

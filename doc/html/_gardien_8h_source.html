@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ICHIGO&#39;BAN:  Fichier source de /mnt/e/Maths info Lyon 1/L2/LIFAPCDA/Azy/IchigoBan/src/core/Gardien.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ICHIGO&#39;BAN
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Jeu de plateau</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_gardien_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Gardien.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_gardien_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//_______________________________________________________________________________________________________________________________________________________________</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef GARD_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define GARD_</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include&quot;<a class="code" href="_position_8h.html">Position.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include&quot;<a class="code" href="_labyrinthe_8h.html">Labyrinthe.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_gardien.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_gardien.html">Gardien</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;public :</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_position.html">Position</a> pos_gardien; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_gardien.html#aab8526f0f25e03d4cb1babbc1aa6d09e">Gardien</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_position.html">Position</a>  <a class="code" href="class_gardien.html#ab5d58a9abb5add71f57df0cfcf42b790">getPositionGardien</a>()<span class="keyword">const</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span>  <a class="code" href="class_gardien.html#a615dee216ff0bd5bd9e37a2dadc35c9a">setPositionGardien</a>(<span class="keyword">const</span> <a class="code" href="class_position.html">Position</a> &amp; p);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_gardien.html#aedd6dfde1c10dabda9d3e5084d4728aa">gauche</a>(<span class="keyword">const</span> <a class="code" href="class_labyrinthe.html">Labyrinthe</a> &amp; l);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_gardien.html#afd6757f2d5f7754e320da3e7f88778ef">droite</a>(<span class="keyword">const</span> <a class="code" href="class_labyrinthe.html">Labyrinthe</a> &amp; l );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_gardien.html#a26c906fa9fefb3e7805bf6800db2395b">haut</a>(<span class="keyword">const</span> <a class="code" href="class_labyrinthe.html">Labyrinthe</a> &amp; l );</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_gardien.html#a846955ad4152f9a7356ca06e202eda6e">bas</a>(<span class="keyword">const</span> <a class="code" href="class_labyrinthe.html">Labyrinthe</a> &amp;l);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> testRegression(<span class="keyword">const</span> <a class="code" href="class_labyrinthe.html">Labyrinthe</a> &amp; l);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_labyrinthe_8h_html"><div class="ttname"><a href="_labyrinthe_8h.html">Labyrinthe.h</a></div><div class="ttdoc">Module gérant les fonctionalités relatives à la création d'un labyrinthe.   un labyrinthe est un tabl...</div></div>
+<div class="ttc" id="a_position_8h_html"><div class="ttname"><a href="_position_8h.html">Position.h</a></div><div class="ttdoc">Module gérant les fonctionalités relatives à la position d'un composant dans le labyrinthe.</div></div>
+<div class="ttc" id="aclass_gardien_html"><div class="ttname"><a href="class_gardien.html">Gardien</a></div><div class="ttdoc">classe representant le gardien, elle contient la Position du gardien</div><div class="ttdef"><b>Definition:</b> Gardien.h:17</div></div>
+<div class="ttc" id="aclass_gardien_html_a26c906fa9fefb3e7805bf6800db2395b"><div class="ttname"><a href="class_gardien.html#a26c906fa9fefb3e7805bf6800db2395b">Gardien::haut</a></div><div class="ttdeci">void haut(const Labyrinthe &amp;l)</div><div class="ttdoc">Permet de déplacé le gardien d'une case vers le haut dans le labyrinthe.</div><div class="ttdef"><b>Definition:</b> Gardien.cpp:43</div></div>
+<div class="ttc" id="aclass_gardien_html_a615dee216ff0bd5bd9e37a2dadc35c9a"><div class="ttname"><a href="class_gardien.html#a615dee216ff0bd5bd9e37a2dadc35c9a">Gardien::setPositionGardien</a></div><div class="ttdeci">void setPositionGardien(const Position &amp;p)</div><div class="ttdoc">Mutateur de l'attribut pos_Gardien.</div><div class="ttdef"><b>Definition:</b> Gardien.cpp:17</div></div>
+<div class="ttc" id="aclass_gardien_html_a846955ad4152f9a7356ca06e202eda6e"><div class="ttname"><a href="class_gardien.html#a846955ad4152f9a7356ca06e202eda6e">Gardien::bas</a></div><div class="ttdeci">void bas(const Labyrinthe &amp;l)</div><div class="ttdoc">Permet de déplacé le gardien d'une case vers le bas dans le labyrinthe.</div><div class="ttdef"><b>Definition:</b> Gardien.cpp:54</div></div>
+<div class="ttc" id="aclass_gardien_html_aab8526f0f25e03d4cb1babbc1aa6d09e"><div class="ttname"><a href="class_gardien.html#aab8526f0f25e03d4cb1babbc1aa6d09e">Gardien::Gardien</a></div><div class="ttdeci">Gardien()</div><div class="ttdoc">Construit un objet Gardien.   Le constructeur crée un objet Gardien par defaut à la position (1,...</div><div class="ttdef"><b>Definition:</b> Gardien.cpp:8</div></div>
+<div class="ttc" id="aclass_gardien_html_ab5d58a9abb5add71f57df0cfcf42b790"><div class="ttname"><a href="class_gardien.html#ab5d58a9abb5add71f57df0cfcf42b790">Gardien::getPositionGardien</a></div><div class="ttdeci">Position getPositionGardien() const</div><div class="ttdoc">Accesseur de l'attribut pos_Gardien.</div><div class="ttdef"><b>Definition:</b> Gardien.cpp:13</div></div>
+<div class="ttc" id="aclass_gardien_html_aedd6dfde1c10dabda9d3e5084d4728aa"><div class="ttname"><a href="class_gardien.html#aedd6dfde1c10dabda9d3e5084d4728aa">Gardien::gauche</a></div><div class="ttdeci">void gauche(const Labyrinthe &amp;l)</div><div class="ttdoc">Permet de déplacé le gardien d'une case vers la gauche dans le labyrinthe.</div><div class="ttdef"><b>Definition:</b> Gardien.cpp:21</div></div>
+<div class="ttc" id="aclass_gardien_html_afd6757f2d5f7754e320da3e7f88778ef"><div class="ttname"><a href="class_gardien.html#afd6757f2d5f7754e320da3e7f88778ef">Gardien::droite</a></div><div class="ttdeci">void droite(const Labyrinthe &amp;l)</div><div class="ttdoc">Permet de déplacé le gardien d'une case vers la droite dans le labyrinthe.</div><div class="ttdef"><b>Definition:</b> Gardien.cpp:32</div></div>
+<div class="ttc" id="aclass_labyrinthe_html"><div class="ttname"><a href="class_labyrinthe.html">Labyrinthe</a></div><div class="ttdoc">La classe contenant les caractéristiques d'un labyrinthe   Dont une Dimension dimension dimL   Et un ...</div><div class="ttdef"><b>Definition:</b> Labyrinthe.h:21</div></div>
+<div class="ttc" id="aclass_position_html"><div class="ttname"><a href="class_position.html">Position</a></div><div class="ttdoc">Classe contenant deux données membres représentant la position x et la position y.</div><div class="ttdef"><b>Definition:</b> Position.h:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="_gardien_8h.html">Gardien.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
