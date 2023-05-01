@@ -35,11 +35,16 @@ Lien git du projet : https://forge.univ-lyon1.fr/p2208660/IchigoBan/
 
 ## Comment jouer
 
+** Aves SDL 
 . Utilisez les touches fléchées pour déplacer le Gardien dans les quatre directions du terrains.
+. Utilisez la touche R du clavier pour rejouer une partie 
+
+** En texte 
+. Utilisez les touches " e : pour haut , s : pour gauche , f: pour droite , d pour bas, et q : pour quitter" 
+
 . Pousser les fraises pour les placer sur leur emplacement cible.
 . Le niveau est terminé lorsque toutes les caisses ont été placées sur leur emplacement cible et un 
    autre niveau est chargé.
-
 
 ## Comment compiler et exécuter le jeu
 
