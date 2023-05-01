@@ -69,7 +69,14 @@ public :
     SdlLab();
     ~SdlLab ();
 
+    /**
+     * @brief Fonction qui affiche tout les éléments du jeu dans une fenetre
+     */
     void sdlLabAfficher();
+
+    /**
+     * @brief Fonction qui gère l'affichage graphique et les actions du joueurs via les touches du clavier tout le long des parties du jeu
+     */
     void sdlLabBoucle();
 
     /**

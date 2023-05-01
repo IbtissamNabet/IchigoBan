@@ -151,6 +151,8 @@ var NAVTREEINDEX0 =
 "functions.html":[4,2,0],
 "functions_func.html":[4,2,1],
 "functions_vars.html":[4,2,2],
+"globals.html":[5,1,0],
+"globals_func.html":[5,1,1],
 "index.html":[],
 "index.html#Compilation":[2],
 "index.html#Execution":[3],
